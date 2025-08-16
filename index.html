@@ -31,10 +31,69 @@
       font-size: 1.18rem;
       margin-bottom: 26px;
     }
+    .reel-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 38px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      box-shadow: 0 2px 12px rgba(220,24,88,0.12);
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+    }
+    .reel-link:hover {
+      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+    }
+    .reels-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(40,0,0,0.80);
+      z-index: 1000;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity .45s;
+    }
+    .reels-overlay.active { display: block; opacity: 1; }
+    .reels-popup {
+      max-width: 1200px;
+      margin: 48px auto;
+      background: rgba(180,0,0,0.96);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 36px 22px 28px 22px;
+      position: relative;
+      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
+    }
+    @keyframes popupIn {
+      from { transform: translateY(40px) scale(0.97); opacity: 0;}
+      to { transform: translateY(0) scale(1); opacity: 1;}
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #4b0000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      z-index: 2;
+    }
+    .close-btn:hover { background: #800000; }
     .projects-section {
       max-width: 1200px;
-      margin: 32px auto;
-      padding: 0 18px;
+      margin: 0 auto;
+      padding: 0;
     }
     .projects-section h2 {
       text-align: center;
@@ -86,13 +145,6 @@
       background: #000;
       border-radius: 12px;
       display: block;
-    }
-    .card-footer {
-      font-size: 0.99rem;
-      color: #eee;
-      margin-top: 8px;
-      opacity: 0.7;
-      display: none;
     }
     @media (max-width: 900px) {
       .projects-section { padding: 0 2px;}
@@ -149,37 +201,43 @@
     <p>Welcome to my portfolio.<br>
       Here you will find my latest reel projects.
     </p>
+    <a class="reel-link" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
   </div>
-  <section class="projects-section">
-    <h2>Reel Projects</h2>
-    <div class="projects-list">
-      <!-- Reel Project 1 -->
-      <div class="project-card">
-        <h3>Reel Project 1</h3>
-        <p>Watch this creative reel directly.</p>
-        <div class="video-container">
-          <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Reel Projects</h2>
+        <div class="projects-list">
+          <!-- Reel Project 1 -->
+          <div class="project-card">
+            <h3>Reel Project 1</h3>
+            <p>Watch this creative reel directly.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 2 -->
+          <div class="project-card">
+            <h3>Reel Project 2</h3>
+            <p>Another reel from my work collection.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 3 -->
+          <div class="project-card">
+            <h3>Reel Project 3</h3>
+            <p>Discover this new reel in my portfolio.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Reel Project 2 -->
-      <div class="project-card">
-        <h3>Reel Project 2</h3>
-        <p>Another reel from my work collection.</p>
-        <div class="video-container">
-          <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
-        </div>
-      </div>
-      <!-- Reel Project 3 -->
-      <div class="project-card">
-        <h3>Reel Project 3</h3>
-        <p>Discover this new reel in my portfolio.</p>
-        <div class="video-container">
-          <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
-        </div>
-      </div>
-      <!-- Replace the above links with your actual video links! -->
+      </section>
     </div>
-  </section>
+  </div>
   <footer>
     <div>
       &copy; TR4-mp4 2025. All rights reserved.
@@ -195,5 +253,20 @@
       </li>
     </ul>
   </footer>
+  <script>
+    // Show/hide reels overlay
+    const showBtn = document.getElementById('showReelsBtn');
+    const overlay = document.getElementById('reelsOverlay');
+    const closeBtn = document.getElementById('closeReelsBtn');
+
+    showBtn.onclick = () => overlay.classList.add('active');
+    closeBtn.onclick = () => overlay.classList.remove('active');
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") overlay.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
