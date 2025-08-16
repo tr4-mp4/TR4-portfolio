@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TR4 Portfolio - Google Drive Videos</title>
+  <title>TR4 Portfolio - Reel Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -31,111 +31,67 @@
       font-size: 1.18rem;
       margin-bottom: 26px;
     }
-    .button {
-      display: inline-block;
-      background: linear-gradient(90deg, #ff3333, #4b0000);
-      border: none;
-      border-radius: 25px;
-      color: #fff;
-      padding: 12px 34px;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 12px rgba(75,0,0,0.15);
-      cursor: pointer;
-      font-weight: 700;
-      transition: background 0.3s;
-      margin-top: 18px;
-    }
-    .button:hover {
-      background: linear-gradient(90deg, #ff0000, #800000);
-    }
-    .projects-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(40,0,0,0.80);
-      z-index: 1000;
-      overflow-y: auto;
-      opacity: 0;
-      transition: opacity .45s;
-    }
-    .projects-overlay.active { display: block; opacity: 1; }
-    .projects-popup {
+    .projects-section {
       max-width: 1200px;
-      margin: 48px auto;
-      background: rgba(180,0,0,0.96);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      padding: 36px 22px 28px 22px;
-      position: relative;
-      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
+      margin: 32px auto;
+      padding: 0 18px;
     }
-    @keyframes popupIn {
-      from { transform: translateY(40px) scale(0.97); opacity: 0;}
-      to { transform: translateY(0) scale(1); opacity: 1;}
+    .projects-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 22px;
     }
-    .close-btn {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: #4b0000;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-      z-index: 2;
-    }
-    .close-btn:hover { background: #800000; }
-    .projects-section h2 { text-align: center; font-size: 2rem; margin-bottom: 18px;}
     .projects-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 32px;
       justify-content: center;
       align-items: stretch;
-      margin-top: 24px;
     }
     .project-card {
       background: rgba(255,255,255,0.10);
       border-radius: 16px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.14);
-      padding: 30px 18px 24px 18px;
+      padding: 28px 18px 22px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       position: relative;
       transition: transform 0.22s, box-shadow 0.22s;
-      min-height: 320px;
+      min-height: 270px;
     }
     .project-card:hover {
       transform: translateY(-6px) scale(1.045);
       box-shadow: 0 8px 32px rgba(0,0,0,0.19);
-      background: rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.15);
     }
-    .video-container {
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 16/9;
-      margin: 16px auto 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .insta-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background: #fff;
+      object-fit: contain;
+      box-shadow: 0 2px 14px rgba(220,24,88,0.10);
     }
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
+    .insta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 34px;
+      border-radius: 24px;
+      text-decoration: none;
+      margin-top: 18px;
+      font-size: 1.08rem;
+      transition: background 0.3s;
+      box-shadow: 0 2px 8px rgba(220,24,88,0.11);
       border: none;
-      background: #000;
-      border-radius: 12px;
-      display: block;
+    }
+    .insta-btn:hover {
+      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+      color: #fff;
     }
     .card-footer {
       font-size: 0.99rem;
@@ -144,10 +100,9 @@
       opacity: 0.7;
     }
     @media (max-width: 900px) {
-      .projects-popup { max-width: 99vw;}
-      .projects-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;}
-      .project-card { min-height: 260px; padding: 18px 6px;}
-      .video-container { max-width: 100%; min-width: 200px;}
+      .projects-section { padding: 0 2px;}
+      .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
+      .project-card { min-height: 220px; padding: 14px 4px;}
     }
     @media (max-width: 600px) {
       .projects-section h2 { font-size:1.3rem;}
@@ -196,57 +151,54 @@
   <div class="container">
     <h1>TR4 Portfolio</h1>
     <p>Welcome to my portfolio.<br>
-      Here you will find my latest video projects shared via Google Drive.
+      Here you will find my latest reel projects.
     </p>
-    <button class="button" id="showProjectsBtn">View Projects</button>
   </div>
-
-  <!-- Projects Overlay -->
-  <div class="projects-overlay" id="projectsOverlay">
-    <div class="projects-popup">
-      <button class="close-btn" id="closeProjectsBtn" title="Close">&times;</button>
-      <section class="projects-section">
-        <h2>Google Drive Video Projects</h2>
-        <div class="projects-list">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <h3>Project 1</h3>
-            <p>Watch this creative video shared on my Google Drive.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
-            </div>
-            <div class="card-footer">
-              <a href="https://drive.google.com/file/d/1ABCDEF1234567890/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
-            </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="project-card">
-            <h3>Project 2</h3>
-            <p>Another video from my work collection on Google Drive.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
-            </div>
-            <div class="card-footer">
-              <a href="https://drive.google.com/file/d/2HIJKLM9876543210/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
-            </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="project-card">
-            <h3>Project 3</h3>
-            <p>Discover this new video in my Google Drive portfolio.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
-            </div>
-            <div class="card-footer">
-              <a href="https://drive.google.com/file/d/3OPQRST2468135790/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
-            </div>
-          </div>
-          <!-- Replace the above links with your actual Google Drive video links! -->
-        </div>
-      </section>
+  <section class="projects-section">
+    <h2>Reel Projects</h2>
+    <div class="projects-list">
+      <!-- Reel Project 1 -->
+      <div class="project-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <h3>Reel Project 1</h3>
+        <p>Creative reel published on my Instagram account.</p>
+        <a href="https://www.instagram.com/reel/DM8Kvgtgqg4/" target="_blank" class="insta-btn">Watch Reel</a>
+        <div class="card-footer">Reel ID: DM8Kvgtgqg4</div>
+      </div>
+      <!-- Reel Project 2 -->
+      <div class="project-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <h3>Reel Project 2</h3>
+        <p>Another creative reel from my work collection.</p>
+        <a href="https://www.instagram.com/reel/DMIfR3bubuZ/" target="_blank" class="insta-btn">Watch Reel</a>
+        <div class="card-footer">Reel ID: DMIfR3bubuZ</div>
+      </div>
+      <!-- Reel Project 3 -->
+      <div class="project-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <h3>Reel Project 3</h3>
+        <p>Discover this new reel on my Instagram.</p>
+        <a href="https://www.instagram.com/reel/DMC4UwesCxE/" target="_blank" class="insta-btn">Watch Reel</a>
+        <div class="card-footer">Reel ID: DMC4UwesCxE</div>
+      </div>
+      <!-- Reel Project 4 -->
+      <div class="project-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <h3>Reel Project 4</h3>
+        <p>Latest artistic and digital work reel.</p>
+        <a href="https://www.instagram.com/reel/DMBHyOsv5em/" target="_blank" class="insta-btn">Watch Reel</a>
+        <div class="card-footer">Reel ID: DMBHyOsv5em</div>
+      </div>
+      <!-- Reel Project 5 -->
+      <div class="project-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+        <h3>Reel Project 5</h3>
+        <p>A new and exclusive reel on Instagram.</p>
+        <a href="https://www.instagram.com/reel/DMA4K3kRbmu/" target="_blank" class="insta-btn">Watch Reel</a>
+        <div class="card-footer">Reel ID: DMA4K3kRbmu</div>
+      </div>
     </div>
-  </div>
-
+  </section>
   <footer>
     <div>
       &copy; TR4-mp4 2025. All rights reserved.
@@ -262,21 +214,5 @@
       </li>
     </ul>
   </footer>
-
-  <script>
-    // Show/hide overlay
-    const showBtn = document.getElementById('showProjectsBtn');
-    const overlay = document.getElementById('projectsOverlay');
-    const closeBtn = document.getElementById('closeProjectsBtn');
-
-    showBtn.onclick = () => overlay.classList.add('active');
-    closeBtn.onclick = () => overlay.classList.remove('active');
-    overlay.onclick = function(e) {
-      if (e.target === overlay) overlay.classList.remove('active');
-    }
-    document.addEventListener('keydown', function(e){
-      if (e.key === "Escape") overlay.classList.remove('active');
-    });
-  </script>
 </body>
 </html>
