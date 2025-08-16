@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TR4 Portfolio - Google Drive Projects</title>
+  <title>TR4 Portfolio - Google Drive Videos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -92,7 +92,7 @@
     .projects-section h2 { text-align: center; font-size: 2rem; margin-bottom: 18px;}
     .projects-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 32px;
       justify-content: center;
       align-items: stretch;
@@ -116,32 +116,26 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.19);
       background: rgba(255,255,255,0.13);
     }
-    .drive-logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      background: #fff;
-      object-fit: contain;
-      box-shadow: 0 2px 14px rgba(60,120,220,0.08);
+    .video-container {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 16/9;
+      margin: 16px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .drive-btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #21A564, #4285F4, #FFC107);
-      color: #fff;
-      font-weight: 700;
-      padding: 12px 34px;
-      border-radius: 24px;
-      text-decoration: none;
-      margin-top: 18px;
-      font-size: 1.08rem;
-      transition: background 0.3s;
-      box-shadow: 0 2px 8px rgba(60,120,220,0.11);
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-    }
-    .drive-btn:hover {
-      background: linear-gradient(90deg, #2ec383, #6ea2fa, #ffd157);
-      color: #fff;
+      background: #000;
+      border-radius: 12px;
+      display: block;
     }
     .card-footer {
       font-size: 0.99rem;
@@ -151,8 +145,9 @@
     }
     @media (max-width: 900px) {
       .projects-popup { max-width: 99vw;}
-      .projects-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;}
+      .projects-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;}
       .project-card { min-height: 260px; padding: 18px 6px;}
+      .video-container { max-width: 100%; min-width: 200px;}
     }
     @media (max-width: 600px) {
       .projects-section h2 { font-size:1.3rem;}
@@ -168,7 +163,7 @@
     .contact-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 20px 0 0 0;
       display: flex;
       justify-content: center;
       gap: 22px;
@@ -201,7 +196,7 @@
   <div class="container">
     <h1>TR4 Portfolio</h1>
     <p>Welcome to my portfolio.<br>
-      Here you will find my latest projects shared as Google Drive files.
+      Here you will find my latest video projects shared via Google Drive.
     </p>
     <button class="button" id="showProjectsBtn">View Projects</button>
   </div>
@@ -211,31 +206,42 @@
     <div class="projects-popup">
       <button class="close-btn" id="closeProjectsBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2>Google Drive Projects</h2>
+        <h2>Google Drive Video Projects</h2>
         <div class="projects-list">
-          <!-- Example Google Drive files - replace with your links -->
+          <!-- Project 1 -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 1</h3>
-            <p>Creative file published on my Google Drive.</p>
-            <a href="https://drive.google.com/file/d/1ABCDEF1234567890/view" target="_blank" class="drive-btn">View File</a>
-            <div class="card-footer">File ID: 1ABCDEF1234567890</div>
+            <p>Watch this creative video shared on my Google Drive.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="card-footer">
+              <a href="https://drive.google.com/file/d/1ABCDEF1234567890/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+            </div>
           </div>
+          <!-- Project 2 -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 2</h3>
-            <p>Another document from my work collection.</p>
-            <a href="https://drive.google.com/file/d/2HIJKLM9876543210/view" target="_blank" class="drive-btn">View File</a>
-            <div class="card-footer">File ID: 2HIJKLM9876543210</div>
+            <p>Another video from my work collection on Google Drive.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="card-footer">
+              <a href="https://drive.google.com/file/d/2HIJKLM9876543210/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+            </div>
           </div>
+          <!-- Project 3 -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 3</h3>
-            <p>Discover this new file in my Google Drive.</p>
-            <a href="https://drive.google.com/file/d/3OPQRST2468135790/view" target="_blank" class="drive-btn">View File</a>
-            <div class="card-footer">File ID: 3OPQRST2468135790</div>
+            <p>Discover this new video in my Google Drive portfolio.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
+            </div>
+            <div class="card-footer">
+              <a href="https://drive.google.com/file/d/3OPQRST2468135790/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+            </div>
           </div>
-          <!-- Add more files as needed -->
+          <!-- Replace the above links with your actual Google Drive video links! -->
         </div>
       </section>
     </div>
