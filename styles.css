@@ -47,59 +47,6 @@ p {
   background: linear-gradient(90deg, #ff0000, #800000);
 }
 
-.projects-section {
-  max-width: 800px;
-  margin: 40px auto;
-  background: rgba(0,0,0,0.14);
-  border-radius: 14px;
-  padding: 30px 20px;
-}
-
-.projects-section h2 {
-  font-size: 2rem;
-  margin-bottom: 18px;
-  text-align: center;
-}
-
-.projects-list {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.project-card {
-  background: rgba(255,255,255,0.08);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(75,0,0,0.13);
-  padding: 24px 18px;
-  width: 230px;
-  color: #fff;
-  margin-bottom: 16px;
-  transition: transform 0.2s;
-}
-
-.project-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  background: rgba(255,255,255,0.12);
-}
-
-.video-link {
-  display: inline-block;
-  margin-top: 12px;
-  background: linear-gradient(90deg, #ff3333, #4b0000);
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 18px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(75,0,0,0.14);
-  transition: background 0.3s;
-}
-.video-link:hover {
-  background: linear-gradient(90deg, #ff0000, #800000);
-}
-
 footer {
   text-align: center;
   padding: 26px 0 10px 0;
