@@ -6,50 +6,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .video-frame {
-      display: block;
-      margin: 14px auto 0 auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(75,0,0,0.22);
-      background: #000;
-      max-width: 100%;
+    /* Overlay styles */
+    .projects-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(40,0,0,0.80);
+      z-index: 1000;
+      overflow-y: auto;
+      animation: fadeIn 0.5s;
     }
-    .project-card {
-      overflow-x: auto;
+    .projects-overlay.active {
+      display: block;
+    }
+    .projects-popup {
+      max-width: 850px;
+      margin: 48px auto;
+      background: rgba(180,0,0,0.96);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 36px 22px 28px 22px;
+      position: relative;
+      animation: popupIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes popupIn {
+      from { transform: scale(0.92); opacity: 0;}
+      to { transform: scale(1); opacity: 1;}
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #4b0000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      transition: background 0.2s;
+    }
+    .close-btn:hover {
+      background: #800000;
+    }
+    .projects-section {
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      max-width: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>TR4 Portfolio</h1>
-    <p>Welcome to my modern portfolio!<br>
+    <p>Welcome to my portfolio!<br>
       Here you will find my work and latest projects.
     </p>
-    <a class="button" href="#projects">View Projects</a>
+    <button class="button" id="showProjectsBtn">View Projects</button>
   </div>
-  <section id="projects" class="projects-section">
-    <h2>Projects</h2>
-    <div class="projects-list">
-      <div class="project-card">
-        <h3>Project 1</h3>
-        <p>Short description about project 1.</p>
-        <iframe class="video-frame" src="https://drive.google.com/file/d/1EKnthaDNxIZXUSlG3hP2WpL_oNazGaKr/preview" width="1280" height="720" allow="autoplay"></iframe>
-      </div>
-      <div class="project-card">
-        <h3>Project 2</h3>
-        <p>Short description about project 2.</p>
-        <iframe class="video-frame" src="https://drive.google.com/file/d/1Pt0b51l57JNjz-xW8-1LXNu3m1b9QrTo/preview" width="1280" height="720" allow="autoplay"></iframe>
-      </div>
-      <div class="project-card">
-        <h3>Project 3</h3>
-        <p>Short description about project 3.</p>
-        <iframe class="video-frame" src="https://drive.google.com/file/d/1636PstZus1Q_-PdfF10bIFWA20keDGj_/preview" width="1280" height="720" allow="autoplay"></iframe>
-      </div>
+
+  <!-- Overlay for Projects -->
+  <div class="projects-overlay" id="projectsOverlay">
+    <div class="projects-popup">
+      <button class="close-btn" id="closeProjectsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Projects</h2>
+        <div class="projects-list">
+          <div class="project-card">
+            <h3>Project 1</h3>
+            <p>Short description about project 1.</p>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1EKnthaDNxIZXUSlG3hP2WpL_oNazGaKr/preview" width="1280" height="720" allow="autoplay"></iframe>
+          </div>
+          <div class="project-card">
+            <h3>Project 2</h3>
+            <p>Short description about project 2.</p>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1Pt0b51l57JNjz-xW8-1LXNu3m1b9QrTo/preview" width="1280" height="720" allow="autoplay"></iframe>
+          </div>
+          <div class="project-card">
+            <h3>Project 3</h3>
+            <p>Short description about project 3.</p>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1636PstZus1Q_-PdfF10bIFWA20keDGj_/preview" width="1280" height="720" allow="autoplay"></iframe>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
+
   <footer>
     &copy; TR4-mp4 2025. All rights reserved.<br>
     Contact: <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
   </footer>
+
+  <script>
+    // Show/hide overlay
+    const showBtn = document.getElementById('showProjectsBtn');
+    const overlay = document.getElementById('projectsOverlay');
+    const closeBtn = document.getElementById('closeProjectsBtn');
+
+    showBtn.onclick = () => overlay.classList.add('active');
+    closeBtn.onclick = () => overlay.classList.remove('active');
+    // Hide overlay when clicking outside popup
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    }
+    // ESC to close
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") overlay.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
