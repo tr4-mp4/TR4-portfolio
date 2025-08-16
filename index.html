@@ -273,4 +273,554 @@
     });
   </script>
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TR4 Portfolio - Reel Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto 30px auto;
+      background: rgba(0,0,0,0.3);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(75,0,0,0.18);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.18rem;
+      margin-bottom: 26px;
+    }
+    .reel-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 38px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      box-shadow: 0 2px 12px rgba(220,24,88,0.12);
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+    }
+    .reel-link:hover {
+      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+    }
+    .reels-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(40,0,0,0.80);
+      z-index: 1000;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity .45s;
+    }
+    .reels-overlay.active { display: block; opacity: 1; }
+    .reels-popup {
+      max-width: 1200px;
+      margin: 48px auto;
+      background: rgba(180,0,0,0.96);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 36px 22px 28px 22px;
+      position: relative;
+      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
+    }
+    @keyframes popupIn {
+      from { transform: translateY(40px) scale(0.97); opacity: 0;}
+      to { transform: translateY(0) scale(1); opacity: 1;}
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #4b0000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      z-index: 2;
+    }
+    .close-btn:hover { background: #800000; }
+    .projects-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .projects-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.10);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+      padding: 28px 18px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.22s, box-shadow 0.22s;
+      min-height: 370px;
+    }
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.045);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+      background: rgba(255,255,255,0.15);
+    }
+    .video-container {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+      border-radius: 12px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .projects-section { padding: 0 2px;}
+      .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
+      .project-card { min-height: 260px; padding: 14px 4px;}
+      .video-container { max-width: 100%; min-width: 160px;}
+    }
+    @media (max-width: 600px) {
+      .projects-section h2 { font-size:1.3rem;}
+      .projects-list { grid-template-columns: 1fr; }
+    }
+    footer {
+      text-align: center;
+      padding: 26px 0 10px 0;
+      color: #eee;
+      font-size: 1rem;
+      background: none;
+    }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      font-size: 1.08rem;
+      flex-wrap: wrap;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .contact-list a {
+      color: #ffd157;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .contact-list a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .contact-logo {
+      width: 22px;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TR4 Portfolio</h1>
+    <p>Welcome to my portfolio.<br>
+      Here you will find my latest reel projects.
+    </p>
+    <a class="reel-link" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+  </div>
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Reel Projects</h2>
+        <div class="projects-list">
+          <!-- Reel Project 1 -->
+          <div class="project-card">
+            <h3>Reel Project 1</h3>
+            <p>Watch this creative reel directly.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 2 -->
+          <div class="project-card">
+            <h3>Reel Project 2</h3>
+            <p>Another reel from my work collection.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 3 -->
+          <div class="project-card">
+            <h3>Reel Project 3</h3>
+            <p>Discover this new reel in my portfolio.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer>
+    <div>
+      &copy; TR4-mp4 2025. All rights reserved.
+    </div>
+    <ul class="contact-list">
+      <li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
+        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
+        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="contact-logo">
+        <a href="https://wa.me/201027207797" target="_blank">+20 102 720 7797</a>
+      </li>
+    </ul>
+  </footer>
+  <script>
+    // Show/hide reels overlay
+    const showBtn = document.getElementById('showReelsBtn');
+    const overlay = document.getElementById('reelsOverlay');
+    const closeBtn = document.getElementById('closeReelsBtn');
+
+    showBtn.onclick = () => overlay.classList.add('active');
+    closeBtn.onclick = () => overlay.classList.remove('active');
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") overlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TR4 Portfolio - Reel Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto 30px auto;
+      background: rgba(0,0,0,0.3);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(75,0,0,0.18);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.18rem;
+      margin-bottom: 26px;
+    }
+    .reel-link {
+      display: inline-block;
+      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 38px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      box-shadow: 0 2px 12px rgba(220,24,88,0.12);
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+    }
+    .reel-link:hover {
+      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+    }
+    .reels-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(40,0,0,0.80);
+      z-index: 1000;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity .45s;
+    }
+    .reels-overlay.active { display: block; opacity: 1; }
+    .reels-popup {
+      max-width: 1200px;
+      margin: 48px auto;
+      background: rgba(180,0,0,0.96);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 36px 22px 28px 22px;
+      position: relative;
+      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
+    }
+    @keyframes popupIn {
+      from { transform: translateY(40px) scale(0.97); opacity: 0;}
+      to { transform: translateY(0) scale(1); opacity: 1;}
+    }
+    .close-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: #4b0000;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      z-index: 2;
+    }
+    .close-btn:hover { background: #800000; }
+    .projects-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .projects-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      justify-content: center;
+      align-items: stretch;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.10);
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+      padding: 28px 18px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.22s, box-shadow 0.22s;
+      min-height: 370px;
+    }
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.045);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+      background: rgba(255,255,255,0.15);
+    }
+    .video-container {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+      border-radius: 12px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .projects-section { padding: 0 2px;}
+      .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
+      .project-card { min-height: 260px; padding: 14px 4px;}
+      .video-container { max-width: 100%; min-width: 160px;}
+    }
+    @media (max-width: 600px) {
+      .projects-section h2 { font-size:1.3rem;}
+      .projects-list { grid-template-columns: 1fr; }
+    }
+    footer {
+      text-align: center;
+      padding: 26px 0 10px 0;
+      color: #eee;
+      font-size: 1rem;
+      background: none;
+    }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      font-size: 1.08rem;
+      flex-wrap: wrap;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .contact-list a {
+      color: #ffd157;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .contact-list a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .contact-logo {
+      width: 22px;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TR4 Portfolio</h1>
+    <p>Welcome to my portfolio.<br>
+      Here you will find my latest reel projects.
+    </p>
+    <a class="reel-link" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+  </div>
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Reel Projects</h2>
+        <div class="projects-list">
+          <!-- Reel Project 1 -->
+          <div class="project-card">
+            <h3>Reel Project 1</h3>
+            <p>Watch this creative reel directly.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 2 -->
+          <div class="project-card">
+            <h3>Reel Project 2</h3>
+            <p>Another reel from my work collection.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <!-- Reel Project 3 -->
+          <div class="project-card">
+            <h3>Reel Project 3</h3>
+            <p>Discover this new reel in my portfolio.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer>
+    <div>
+      &copy; TR4-mp4 2025. All rights reserved.
+    </div>
+    <ul class="contact-list">
+      <li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
+        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
+        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="contact-logo">
+        <a href="https://wa.me/201027207797" target="_blank">+20 102 720 7797</a>
+      </li>
+    </ul>
+  </footer>
+  <script>
+    // Show/hide reels overlay
+    const showBtn = document.getElementById('showReelsBtn');
+    const overlay = document.getElementById('reelsOverlay');
+    const closeBtn = document.getElementById('closeReelsBtn');
+
+    showBtn.onclick = () => overlay.classList.add('active');
+    closeBtn.onclick = () => overlay.classList.remove('active');
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") overlay.classList.remove('active');
+    });
+  </script>
+</body>
 </html>
