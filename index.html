@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TR4 Portfolio - Reel Projects</title>
+  <title>TR4 Portfolio - Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -31,7 +31,15 @@
       font-size: 1.18rem;
       margin-bottom: 26px;
     }
-    .reel-link {
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .project-btn {
       display: inline-block;
       background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
       color: #fff;
@@ -40,16 +48,22 @@
       border-radius: 30px;
       text-decoration: none;
       font-size: 1.2rem;
-      margin-top: 10px;
       box-shadow: 0 2px 12px rgba(220,24,88,0.12);
       cursor: pointer;
-      transition: background 0.3s;
       border: none;
+      transition: background 0.3s;
+      margin-top: 0;
     }
-    .reel-link:hover {
+    .project-btn:hover {
       background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
     }
-    .reels-overlay {
+    .yt-btn {
+      background: linear-gradient(90deg, #ff0000, #ffb347 80%);
+    }
+    .yt-btn:hover {
+      background: linear-gradient(90deg, #d60000, #ffd580 80%);
+    }
+    .reels-overlay, .youtube-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0;
@@ -60,8 +74,8 @@
       opacity: 0;
       transition: opacity .45s;
     }
-    .reels-overlay.active { display: block; opacity: 1; }
-    .reels-popup {
+    .reels-overlay.active, .youtube-overlay.active { display: block; opacity: 1;}
+    .reels-popup, .youtube-popup {
       max-width: 1200px;
       margin: 48px auto;
       background: rgba(180,0,0,0.96);
@@ -146,11 +160,32 @@
       border-radius: 12px;
       display: block;
     }
+    .youtube-file-container {
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .youtube-file-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+      border-radius: 12px;
+      display: block;
+    }
     @media (max-width: 900px) {
       .projects-section { padding: 0 2px;}
       .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
       .project-card { min-height: 260px; padding: 14px 4px;}
-      .video-container { max-width: 100%; min-width: 160px;}
+      .video-container, .youtube-file-container { max-width: 100%; min-width: 160px;}
     }
     @media (max-width: 600px) {
       .projects-section h2 { font-size:1.3rem;}
@@ -201,7 +236,10 @@
     <p>Welcome to my portfolio.<br>
       Here you will find my latest reel projects.
     </p>
-    <a class="reel-link" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+    <div class="btn-group">
+      <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+      <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
+    </div>
   </div>
   <!-- Reel Projects Overlay -->
   <div class="reels-overlay" id="reelsOverlay">
@@ -238,6 +276,18 @@
       </section>
     </div>
   </div>
+  <!-- Youtube Project Overlay -->
+  <div class="youtube-overlay" id="youtubeOverlay">
+    <div class="youtube-popup">
+      <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>YouTube Projects</h2>
+        <div class="youtube-file-container">
+          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
   <footer>
     <div>
       &copy; TR4-mp4 2025. All rights reserved.
@@ -259,17 +309,32 @@
   </footer>
   <script>
     // Show/hide reels overlay
-    const showBtn = document.getElementById('showReelsBtn');
-    const overlay = document.getElementById('reelsOverlay');
-    const closeBtn = document.getElementById('closeReelsBtn');
+    const showReelsBtn = document.getElementById('showReelsBtn');
+    const reelsOverlay = document.getElementById('reelsOverlay');
+    const closeReelsBtn = document.getElementById('closeReelsBtn');
 
-    showBtn.onclick = () => overlay.classList.add('active');
-    closeBtn.onclick = () => overlay.classList.remove('active');
-    overlay.onclick = function(e) {
-      if (e.target === overlay) overlay.classList.remove('active');
+    showReelsBtn.onclick = () => reelsOverlay.classList.add('active');
+    closeReelsBtn.onclick = () => reelsOverlay.classList.remove('active');
+    reelsOverlay.onclick = function(e) {
+      if (e.target === reelsOverlay) reelsOverlay.classList.remove('active');
     }
+
+    // Show/hide youtube overlay
+    const showYoutubeBtn = document.getElementById('showYoutubeBtn');
+    const youtubeOverlay = document.getElementById('youtubeOverlay');
+    const closeYoutubeBtn = document.getElementById('closeYoutubeBtn');
+
+    showYoutubeBtn.onclick = () => youtubeOverlay.classList.add('active');
+    closeYoutubeBtn.onclick = () => youtubeOverlay.classList.remove('active');
+    youtubeOverlay.onclick = function(e) {
+      if (e.target === youtubeOverlay) youtubeOverlay.classList.remove('active');
+    }
+
     document.addEventListener('keydown', function(e){
-      if (e.key === "Escape") overlay.classList.remove('active');
+      if (e.key === "Escape") {
+        reelsOverlay.classList.remove('active');
+        youtubeOverlay.classList.remove('active');
+      }
     });
   </script>
 </body>
