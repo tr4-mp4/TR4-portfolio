@@ -59,39 +59,33 @@
       text-align: center;
       position: relative;
       transition: transform 0.22s, box-shadow 0.22s;
-      min-height: 270px;
+      min-height: 370px;
     }
     .project-card:hover {
       transform: translateY(-6px) scale(1.045);
       box-shadow: 0 8px 32px rgba(0,0,0,0.19);
       background: rgba(255,255,255,0.15);
     }
-    .insta-logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      background: #fff;
-      object-fit: contain;
-      box-shadow: 0 2px 14px rgba(220,24,88,0.10);
+    .video-container {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .insta-btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
-      color: #fff;
-      font-weight: 700;
-      padding: 12px 34px;
-      border-radius: 24px;
-      text-decoration: none;
-      margin-top: 18px;
-      font-size: 1.08rem;
-      transition: background 0.3s;
-      box-shadow: 0 2px 8px rgba(220,24,88,0.11);
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-    }
-    .insta-btn:hover {
-      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
-      color: #fff;
+      background: #000;
+      border-radius: 12px;
+      display: block;
     }
     .card-footer {
       font-size: 0.99rem;
@@ -102,7 +96,8 @@
     @media (max-width: 900px) {
       .projects-section { padding: 0 2px;}
       .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
-      .project-card { min-height: 220px; padding: 14px 4px;}
+      .project-card { min-height: 260px; padding: 14px 4px;}
+      .video-container { max-width: 100%; min-width: 160px;}
     }
     @media (max-width: 600px) {
       .projects-section h2 { font-size:1.3rem;}
@@ -159,44 +154,38 @@
     <div class="projects-list">
       <!-- Reel Project 1 -->
       <div class="project-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
         <h3>Reel Project 1</h3>
-        <p>Creative reel published on my Instagram account.</p>
-        <a href="https://www.instagram.com/reel/DM8Kvgtgqg4/" target="_blank" class="insta-btn">Watch Reel</a>
-        <div class="card-footer">Reel ID: DM8Kvgtgqg4</div>
+        <p>Watch this creative reel directly.</p>
+        <div class="video-container">
+          <iframe src="https://drive.google.com/file/d/1ABCDEF1234567890/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="card-footer">
+          <a href="https://drive.google.com/file/d/1ABCDEF1234567890/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+        </div>
       </div>
       <!-- Reel Project 2 -->
       <div class="project-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
         <h3>Reel Project 2</h3>
-        <p>Another creative reel from my work collection.</p>
-        <a href="https://www.instagram.com/reel/DMIfR3bubuZ/" target="_blank" class="insta-btn">Watch Reel</a>
-        <div class="card-footer">Reel ID: DMIfR3bubuZ</div>
+        <p>Another reel from my work collection.</p>
+        <div class="video-container">
+          <iframe src="https://drive.google.com/file/d/2HIJKLM9876543210/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="card-footer">
+          <a href="https://drive.google.com/file/d/2HIJKLM9876543210/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+        </div>
       </div>
       <!-- Reel Project 3 -->
       <div class="project-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
         <h3>Reel Project 3</h3>
-        <p>Discover this new reel on my Instagram.</p>
-        <a href="https://www.instagram.com/reel/DMC4UwesCxE/" target="_blank" class="insta-btn">Watch Reel</a>
-        <div class="card-footer">Reel ID: DMC4UwesCxE</div>
+        <p>Discover this new reel in my portfolio.</p>
+        <div class="video-container">
+          <iframe src="https://drive.google.com/file/d/3OPQRST2468135790/preview" allow="autoplay"></iframe>
+        </div>
+        <div class="card-footer">
+          <a href="https://drive.google.com/file/d/3OPQRST2468135790/view" target="_blank" style="color:#ffd157;">Open in Google Drive</a>
+        </div>
       </div>
-      <!-- Reel Project 4 -->
-      <div class="project-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
-        <h3>Reel Project 4</h3>
-        <p>Latest artistic and digital work reel.</p>
-        <a href="https://www.instagram.com/reel/DMBHyOsv5em/" target="_blank" class="insta-btn">Watch Reel</a>
-        <div class="card-footer">Reel ID: DMBHyOsv5em</div>
-      </div>
-      <!-- Reel Project 5 -->
-      <div class="project-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
-        <h3>Reel Project 5</h3>
-        <p>A new and exclusive reel on Instagram.</p>
-        <a href="https://www.instagram.com/reel/DMA4K3kRbmu/" target="_blank" class="insta-btn">Watch Reel</a>
-        <div class="card-footer">Reel ID: DMA4K3kRbmu</div>
-      </div>
+      <!-- Replace the above links with your actual video links! -->
     </div>
   </section>
   <footer>
