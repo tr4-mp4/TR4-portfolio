@@ -1,32 +1,56 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-header {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-#projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.project {
-  margin: 10px;
-}
-
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  margin-top: 20px;
-}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>TR4 portfolio</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: rgba(0,0,0,0.2);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(75,0,0,0.18);
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 25px;
+    }
+    .button {
+      background: linear-gradient(90deg, #ff3333, #4b0000);
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(75,0,0,0.15);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: linear-gradient(90deg, #ff0000, #800000);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>مرحبًا في موقعي العصري</h1>
+    <p>هذا مثال على تدرج بين الأحمر والأحمر الغامق جدا وواجهة عصرية.</p>
+    <button class="button">اضغط هنا</button>
+  </div>
+</body>
+</html>
