@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Overlay styles */
+    /* Overlay styles (سلاسة عند الظهور) */
     .projects-overlay {
       display: none;
       position: fixed;
@@ -15,10 +15,12 @@
       background: rgba(40,0,0,0.80);
       z-index: 1000;
       overflow-y: auto;
-      animation: fadeIn 0.5s;
+      opacity: 0;
+      transition: opacity .45s;
     }
     .projects-overlay.active {
       display: block;
+      opacity: 1;
     }
     .projects-popup {
       max-width: 850px;
@@ -30,13 +32,9 @@
       position: relative;
       animation: popupIn 0.5s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
     @keyframes popupIn {
-      from { transform: scale(0.92); opacity: 0;}
-      to { transform: scale(1); opacity: 1;}
+      from { transform: translateY(40px) scale(0.97); opacity: 0;}
+      to { transform: translateY(0) scale(1); opacity: 1;}
     }
     .close-btn {
       position: absolute;
@@ -55,13 +53,50 @@
     .close-btn:hover {
       background: #800000;
     }
-    .projects-section {
-      background: transparent;
-      margin: 0;
-      padding: 0;
-      border-radius: 0;
-      box-shadow: none;
-      max-width: none;
+    .projects-section { background: transparent; margin: 0; padding: 0; border-radius: 0; box-shadow: none; max-width: none;}
+    .projects-section h2 { text-align: center; font-size: 2rem; margin-bottom: 18px;}
+    .projects-list {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(75,0,0,0.13);
+      padding: 24px 18px;
+      width: 330px; /* أكبر ليظهر الفيديو بشكل أفضل */
+      color: #fff;
+      margin-bottom: 16px;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      background: rgba(255,255,255,0.12);
+    }
+    .video-frame {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      margin-top: 12px;
+      background: #000;
+      border: none;
+      display: block;
+      transition: box-shadow .3s;
+    }
+    .video-frame:hover {
+      box-shadow: 0 6px 30px rgba(75,0,0,0.28);
+    }
+    @media (max-width: 700px) {
+      .projects-list { flex-direction: column; gap: 0;}
+      .project-card { width: 94%; max-width: 400px; margin: 0 auto 18px auto;}
+      .video-frame { max-width: 100%; }
     }
   </style>
 </head>
@@ -84,17 +119,17 @@
           <div class="project-card">
             <h3>Project 1</h3>
             <p>Short description about project 1.</p>
-            <iframe class="video-frame" src="https://drive.google.com/file/d/1EKnthaDNxIZXUSlG3hP2WpL_oNazGaKr/preview" width="1280" height="720" allow="autoplay"></iframe>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1EKnthaDNxIZXUSlG3hP2WpL_oNazGaKr/preview" allow="autoplay"></iframe>
           </div>
           <div class="project-card">
             <h3>Project 2</h3>
             <p>Short description about project 2.</p>
-            <iframe class="video-frame" src="https://drive.google.com/file/d/1Pt0b51l57JNjz-xW8-1LXNu3m1b9QrTo/preview" width="1280" height="720" allow="autoplay"></iframe>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1Pt0b51l57JNjz-xW8-1LXNu3m1b9QrTo/preview" allow="autoplay"></iframe>
           </div>
           <div class="project-card">
             <h3>Project 3</h3>
             <p>Short description about project 3.</p>
-            <iframe class="video-frame" src="https://drive.google.com/file/d/1636PstZus1Q_-PdfF10bIFWA20keDGj_/preview" width="1280" height="720" allow="autoplay"></iframe>
+            <iframe class="video-frame" src="https://drive.google.com/file/d/1636PstZus1Q_-PdfF10bIFWA20keDGj_/preview" allow="autoplay"></iframe>
           </div>
         </div>
       </section>
@@ -114,11 +149,9 @@
 
     showBtn.onclick = () => overlay.classList.add('active');
     closeBtn.onclick = () => overlay.classList.remove('active');
-    // Hide overlay when clicking outside popup
     overlay.onclick = function(e) {
       if (e.target === overlay) overlay.classList.remove('active');
     }
-    // ESC to close
     document.addEventListener('keydown', function(e){
       if (e.key === "Escape") overlay.classList.remove('active');
     });
