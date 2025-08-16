@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TR4 Portfolio - Instagram Reels</title>
+  <title>TR4 Portfolio - Google Drive Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -20,6 +20,16 @@
       box-shadow: 0 8px 24px rgba(75,0,0,0.18);
       padding: 40px 32px;
       text-align: center;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.18rem;
+      margin-bottom: 26px;
     }
     .button {
       display: inline-block;
@@ -106,18 +116,18 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.19);
       background: rgba(255,255,255,0.13);
     }
-    .insta-logo {
+    .drive-logo {
       width: 62px;
       height: 62px;
       border-radius: 14px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 14px rgba(220,24,88,0.10);
       background: #fff;
       object-fit: contain;
+      box-shadow: 0 2px 14px rgba(60,120,220,0.08);
     }
-    .insta-btn {
+    .drive-btn {
       display: inline-block;
-      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+      background: linear-gradient(90deg, #21A564, #4285F4, #FFC107);
       color: #fff;
       font-weight: 700;
       padding: 12px 34px;
@@ -126,11 +136,11 @@
       margin-top: 18px;
       font-size: 1.08rem;
       transition: background 0.3s;
-      box-shadow: 0 2px 8px rgba(220,24,88,0.11);
+      box-shadow: 0 2px 8px rgba(60,120,220,0.11);
       border: none;
     }
-    .insta-btn:hover {
-      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+    .drive-btn:hover {
+      background: linear-gradient(90deg, #2ec383, #6ea2fa, #ffd157);
       color: #fff;
     }
     .card-footer {
@@ -155,13 +165,43 @@
       font-size: 1rem;
       background: none;
     }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      font-size: 1.08rem;
+      flex-wrap: wrap;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .contact-list a {
+      color: #ffd157;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .contact-list a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .contact-logo {
+      width: 22px;
+      vertical-align: middle;
+      margin-right: 2px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>TR4 Portfolio</h1>
     <p>Welcome to my portfolio.<br>
-      Here you will find my latest projects shared as Instagram Reels.
+      Here you will find my latest projects shared as Google Drive files.
     </p>
     <button class="button" id="showProjectsBtn">View Projects</button>
   </div>
@@ -171,56 +211,50 @@
     <div class="projects-popup">
       <button class="close-btn" id="closeProjectsBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2>Instagram Reels Projects</h2>
+        <h2>Google Drive Projects</h2>
         <div class="projects-list">
-          <!-- Reel 1 -->
+          <!-- Example Google Drive files - replace with your links -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 1</h3>
-            <p>Creative reel published on my Instagram account.</p>
-            <a href="https://www.instagram.com/reel/DM8Kvgtgqg4/" target="_blank" class="insta-btn">Watch Reel</a>
-            <div class="card-footer">Reel ID: DM8Kvgtgqg4</div>
+            <p>Creative file published on my Google Drive.</p>
+            <a href="https://drive.google.com/file/d/1ABCDEF1234567890/view" target="_blank" class="drive-btn">View File</a>
+            <div class="card-footer">File ID: 1ABCDEF1234567890</div>
           </div>
-          <!-- Reel 2 -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 2</h3>
-            <p>Another creative reel from my work collection.</p>
-            <a href="https://www.instagram.com/reel/DMIfR3bubuZ/" target="_blank" class="insta-btn">Watch Reel</a>
-            <div class="card-footer">Reel ID: DMIfR3bubuZ</div>
+            <p>Another document from my work collection.</p>
+            <a href="https://drive.google.com/file/d/2HIJKLM9876543210/view" target="_blank" class="drive-btn">View File</a>
+            <div class="card-footer">File ID: 2HIJKLM9876543210</div>
           </div>
-          <!-- Reel 3 -->
           <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive" class="drive-logo">
             <h3>Project 3</h3>
-            <p>Discover this new reel on my Instagram.</p>
-            <a href="https://www.instagram.com/reel/DMC4UwesCxE/" target="_blank" class="insta-btn">Watch Reel</a>
-            <div class="card-footer">Reel ID: DMC4UwesCxE</div>
+            <p>Discover this new file in my Google Drive.</p>
+            <a href="https://drive.google.com/file/d/3OPQRST2468135790/view" target="_blank" class="drive-btn">View File</a>
+            <div class="card-footer">File ID: 3OPQRST2468135790</div>
           </div>
-          <!-- Reel 4 -->
-          <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
-            <h3>Project 4</h3>
-            <p>Latest artistic and digital work reel.</p>
-            <a href="https://www.instagram.com/reel/DMBHyOsv5em/" target="_blank" class="insta-btn">Watch Reel</a>
-            <div class="card-footer">Reel ID: DMBHyOsv5em</div>
-          </div>
-          <!-- Reel 5 -->
-          <div class="project-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-logo">
-            <h3>Project 5</h3>
-            <p>A new and exclusive reel on Instagram.</p>
-            <a href="https://www.instagram.com/reel/DMA4K3kRbmu/" target="_blank" class="insta-btn">Watch Reel</a>
-            <div class="card-footer">Reel ID: DMA4K3kRbmu</div>
-          </div>
+          <!-- Add more files as needed -->
         </div>
       </section>
     </div>
   </div>
 
   <footer>
-    &copy; TR4-mp4 2025. All rights reserved.<br>
-    Contact: <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+    <div>
+      &copy; TR4-mp4 2025. All rights reserved.
+    </div>
+    <ul class="contact-list">
+      <li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
+        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
+        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+      </li>
+    </ul>
   </footer>
 
   <script>
