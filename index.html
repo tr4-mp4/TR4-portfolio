@@ -5,25 +5,29 @@
   <title>TR4 Portfolio - Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Main CSS -->
   <link rel="stylesheet" href="styles.css" />
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
+  <!-- Main card like your screenshot -->
   <main class="container">
     <!-- Logo -->
     <img src="logo.png" alt="TR4 Logo" class="site-logo" />
 
+    <!-- Title + intro -->
     <h1>TR4 Portfolio</h1>
-    <p class="lead">Welcome to my portfolio. Here you will find my latest reel projects.</p>
+    <p class="lead">Welcome to my portfolio.<br>Here you will find my latest reel projects.</p>
 
-    <!-- About Me (English only) -->
+    <!-- About box (English only for clarity) -->
     <section class="about" aria-labelledby="about-title">
       <h2 id="about-title">About Me</h2>
       <p>
         Hi, I’m Mohamed — a <strong>University Student</strong>, <strong>Video Editor</strong>, and
-        <strong>Content Creator</strong>. I produce engaging Reels and YouTube projects to share
-        creative ideas in a clear and inspiring way.
+        <strong>Content Creator</strong>. I create Reels and YouTube projects to share creative ideas
+        in a simple, inspiring way. 🎬🔥
       </p>
     </section>
 
@@ -61,6 +65,27 @@
               <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
             </div>
           </article>
+
+          <article class="project-card">
+            <h3>Reel Project 4</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Reel Project 5</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Reel Project 6</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
+            </div>
+          </article>
         </div>
       </section>
     </div>
@@ -72,61 +97,62 @@
       <button class="close-btn" id="closeYoutubeBtn" type="button" aria-label="Close YouTube">&times;</button>
       <section class="projects-section">
         <h2>YouTube Projects</h2>
-        <div class="projects-list">
-          <article class="project-card">
-            <h3>YouTube Project 1</h3>
-            <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-            </div>
-          </article>
+        <div class="youtube-file-container">
+          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
         </div>
       </section>
     </div>
   </div>
 
-  <!-- Contact (bottom small box) -->
+  <!-- Contact box at the bottom (same style family) -->
   <section class="contact" aria-labelledby="contact-title">
     <h2 id="contact-title">Contact Me</h2>
-    <div class="social-icons" role="list">
-      <a role="listitem" aria-label="Instagram"
-         href="https://instagram.com/mo7amed.tr4" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-instagram"></i>
+    <div class="icon-row" role="list">
+      <!-- Instagram -->
+      <a role="listitem" class="icon-btn ig" href="https://instagram.com/mo7amed.tr4" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
       </a>
-      <a role="listitem" aria-label="Email"
-         href="mailto:m7y.work@gmail.com">
-        <i class="fas fa-envelope"></i>
+      <!-- Email -->
+      <a role="listitem" class="icon-btn mail" href="mailto:m7y.work@gmail.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
       </a>
-      <a role="listitem" aria-label="WhatsApp"
-         href="https://wa.me/201027207797" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
+      <!-- WhatsApp -->
+      <a role="listitem" class="icon-btn wa" href="https://wa.me/201027207797" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 TR4 Portfolio. All rights reserved.</p>
+    <p>&copy; TR4-mp4 2025. All rights reserved.</p>
   </footer>
 
   <script>
-    // Helpers
-    const $ = (sel) => document.querySelector(sel);
+    // Short helpers
+    const $ = (s) => document.querySelector(s);
 
     // Overlays
     const reelsOverlay   = $('#reelsOverlay');
     const youtubeOverlay = $('#youtubeOverlay');
 
-    // Open/close handlers (use class toggle for reliability)
+    // Open overlays
     $('#showReelsBtn').addEventListener('click', () => {
-      reelsOverlay.classList.add('active'); reelsOverlay.setAttribute('aria-hidden','false');
+      reelsOverlay.classList.add('active');
+      reelsOverlay.setAttribute('aria-hidden','false');
     });
     $('#showYoutubeBtn').addEventListener('click', () => {
-      youtubeOverlay.classList.add('active'); youtubeOverlay.setAttribute('aria-hidden','false');
+      youtubeOverlay.classList.add('active');
+      youtubeOverlay.setAttribute('aria-hidden','false');
     });
+
+    // Close overlays
     $('#closeReelsBtn').addEventListener('click', () => {
-      reelsOverlay.classList.remove('active'); reelsOverlay.setAttribute('aria-hidden','true');
+      reelsOverlay.classList.remove('active');
+      reelsOverlay.setAttribute('aria-hidden','true');
     });
     $('#closeYoutubeBtn').addEventListener('click', () => {
-      youtubeOverlay.classList.remove('active'); youtubeOverlay.setAttribute('aria-hidden','true');
+      youtubeOverlay.classList.remove('active');
+      youtubeOverlay.setAttribute('aria-hidden','true');
     });
 
     // Click outside to close
