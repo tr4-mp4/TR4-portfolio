@@ -1,113 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TR4 Portfolio - Projects</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TR4 Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <!-- اللوجو -->
-    <img src="logo.png" alt="TR4 Logo" class="site-logo">
-
-    <h1>TR4 Portfolio</h1>
-    <p>Welcome to my portfolio.<br> Here you will find my latest reel projects. </p>
-
-    <!-- About Me -->
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        I'm Mohamed, a university student ✨  
-        Working as a <strong>Video Editor</strong> and <strong>Content Creator</strong>.  
-        I love sharing my work through Reels and YouTube projects,  
-        with the goal of delivering creative and inspiring ideas 🎬🔥.  
-      </p>
-    </section>
-
-    <div class="btn-group">
-      <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
-      <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TR4 Logo">
+      <h1>TR4 Portfolio</h1>
     </div>
-  </div>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#reels">Reels</a>
+      <a href="#youtube">YouTube</a>
+      <a href="#contact">Contact Me</a>
+    </nav>
+  </header>
 
-  <!-- Reel Projects Overlay -->
-  <div class="reels-overlay" id="reelsOverlay">
-    <div class="reels-popup">
-      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
-      <section class="projects-section">
-        <h2>Reel Projects</h2>
-        <div class="projects-list">
-          <!-- Reel Project Cards -->
-          <div class="project-card">
-            <h3>Reel Project 1</h3>
-            <p>Watch this creative reel directly.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3>Reel Project 2</h3>
-            <p>Another reel from my work collection.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3>Reel Project 3</h3>
-            <p>Discover this new reel in my portfolio.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm TR4 — a university student, video editor, and content creator.  
+      I create engaging short-form videos (Reels & Shorts) with unique ideas, focusing on strange and economic facts.  
+      My goal is to inspire and entertain people while building a strong presence online.
+    </p>
+  </section>
 
-  <!-- Youtube Projects Overlay -->
-  <div class="youtube-overlay" id="youtubeOverlay">
-    <div class="youtube-popup">
-      <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
-      <section class="projects-section">
-        <h2>YouTube Projects</h2>
-        <div class="projects-list">
-          <!-- Example YT Project -->
-          <div class="project-card">
-            <h3>YouTube Project 1</h3>
-            <p>Check out my YouTube project below.</p>
-            <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+  <section id="reels" class="section">
+    <h2>My Reels</h2>
+    <p>Check out my latest Instagram reels showcasing creative video edits and unique concepts.</p>
+  </section>
 
-  <!-- Contact Section -->
-  <section class="contact">
+  <section id="youtube" class="section">
+    <h2>YouTube</h2>
+    <p>On my YouTube channel, I share short videos and creative edits to engage and entertain my audience.</p>
+  </section>
+
+  <section id="contact" class="contact">
     <h2>Contact Me</h2>
     <div class="contact-icons">
-      <a href="https://www.instagram.com/your_instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:yourmail@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://wa.me/201027207797" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/yourusername" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="mailto:yourmail@example.com">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://wa.me/201027207797" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 TR4 Portfolio. All rights reserved.</p>
   </footer>
-
-  <script>
-    const reelsOverlay = document.getElementById('reelsOverlay');
-    const youtubeOverlay = document.getElementById('youtubeOverlay');
-    document.getElementById('showReelsBtn').onclick = () => reelsOverlay.style.display = 'flex';
-    document.getElementById('showYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'flex';
-    document.getElementById('closeReelsBtn').onclick = () => reelsOverlay.style.display = 'none';
-    document.getElementById('closeYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'none';
-  </script>
 </body>
 </html>
