@@ -5,10 +5,11 @@
   <title>TR4 Portfolio - Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <!-- اللوجو -->
+    <!-- Logo -->
     <img src="logo.png" alt="TR4 Logo" class="site-logo">
 
     <h1>TR4 Portfolio</h1>
@@ -18,12 +19,9 @@
     <section class="about">
       <h2>About Me</h2>
       <p>
-        أنا محمد، طالب ثانوي 📚 و Video Editor ✂️،  
-        بحب أشتغل كـ Content Creator وأشارك الناس شغلي.  
-        هدفي أقدم محتوى مختلف على YouTube و Reels  
-        بالإنجليزي 🎥، يكون مفيد وممتع وفي نفس الوقت من غير أي حاجة حرام.  
-        بحب دايمًا أتعلم حاجات جديدة وأطوّر من نفسي،  
-        وبشوف إن الإبداع هو المفتاح للنجاح. ✨
+        Hi, I'm Mohamed 👋<br>
+        I'm a <strong>University Student</strong>, <strong>Video Editor</strong>, and <strong>Content Creator</strong>.  
+        I love creating Reels & YouTube projects, sharing creative ideas in a simple and inspiring way 🎬🔥.
       </p>
     </section>
 
@@ -62,93 +60,52 @@
               <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
             </div>
           </div>
-          <div class="project-card">
-            <h3>Reel Project 4</h3>
-            <p>Reel from my creative work.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3>Reel Project 5</h3>
-            <p>New visual reel.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
-          <div class="project-card">
-            <h3>Reel Project 6</h3>
-            <p>Fresh reel from my collection.</p>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
-            </div>
-          </div>
         </div>
       </section>
     </div>
   </div>
 
-  <!-- Youtube Project Overlay -->
+  <!-- Youtube Projects Overlay -->
   <div class="youtube-overlay" id="youtubeOverlay">
     <div class="youtube-popup">
       <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
       <section class="projects-section">
         <h2>YouTube Projects</h2>
-        <div class="youtube-file-container">
-          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
+        <div class="projects-list">
+          <div class="project-card">
+            <h3>YouTube Project 1</h3>
+            <p>Check out my YouTube project below.</p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </section>
     </div>
   </div>
 
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <div class="social-icons">
+      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:example@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/201027207797" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
-    <div> &copy; TR4-mp4 2025. All rights reserved. </div>
-    <ul class="contact-list">
-      <li>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
-        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
-      </li>
-      <li>
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
-        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
-      </li>
-      <li>
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="contact-logo">
-        <a href="https://wa.me/201027207797" target="_blank">+20 102 720 7797</a>
-      </li>
-    </ul>
+    <p>&copy; 2025 TR4 Portfolio. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Show/hide reels overlay
-    const showReelsBtn = document.getElementById('showReelsBtn');
     const reelsOverlay = document.getElementById('reelsOverlay');
-    const closeReelsBtn = document.getElementById('closeReelsBtn');
-    showReelsBtn.onclick = () => reelsOverlay.classList.add('active');
-    closeReelsBtn.onclick = () => reelsOverlay.classList.remove('active');
-    reelsOverlay.onclick = function(e) {
-      if (e.target === reelsOverlay) reelsOverlay.classList.remove('active');
-    }
-
-    // Show/hide youtube overlay
-    const showYoutubeBtn = document.getElementById('showYoutubeBtn');
     const youtubeOverlay = document.getElementById('youtubeOverlay');
-    const closeYoutubeBtn = document.getElementById('closeYoutubeBtn');
-    showYoutubeBtn.onclick = () => youtubeOverlay.classList.add('active');
-    closeYoutubeBtn.onclick = () => youtubeOverlay.classList.remove('active');
-    youtubeOverlay.onclick = function(e) {
-      if (e.target === youtubeOverlay) youtubeOverlay.classList.remove('active');
-    }
-
-    // ESC close overlays
-    document.addEventListener('keydown', function(e){
-      if (e.key === "Escape") {
-        reelsOverlay.classList.remove('active');
-        youtubeOverlay.classList.remove('active');
-      }
-    });
+    document.getElementById('showReelsBtn').onclick = () => reelsOverlay.style.display = 'flex';
+    document.getElementById('showYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'flex';
+    document.getElementById('closeReelsBtn').onclick = () => reelsOverlay.style.display = 'none';
+    document.getElementById('closeYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'none';
   </script>
 </body>
 </html>
