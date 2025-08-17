@@ -1,159 +1,103 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #333;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TR4 Portfolio - Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="logo.png" alt="TR4 Logo" class="site-logo">
 
-.container {
-  padding: 20px;
-}
+    <h1>TR4 Portfolio</h1>
+    <p>Welcome to my portfolio.<br> Here you will find my latest projects.</p>
 
-.site-logo {
-  width: 100px;
-  margin-bottom: 20px;
-}
+    <!-- About Me -->
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm Mohamed 👋<br>
+        A university student, <strong>Video Editor</strong> and <strong>Content Creator</strong>.  
+        I create Reels and YouTube projects with the goal of sharing creative and inspiring ideas 🎬🔥.
+      </p>
+    </section>
 
-h1 {
-  margin-bottom: 10px;
-}
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:example@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
 
-p {
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
+    <div class="btn-group">
+      <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+      <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
+    </div>
+  </div>
 
-.about {
-  background: #fff;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 600px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Reel Projects</h2>
+        <div class="projects-list">
+          <div class="project-card">
+            <h3>Reel Project 1</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 2</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 3</h3>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
-.btn-group {
-  margin: 20px 0;
-}
+  <!-- YouTube Projects Overlay -->
+  <div class="youtube-overlay" id="youtubeOverlay">
+    <div class="youtube-popup">
+      <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>YouTube Projects</h2>
+        <div class="projects-list">
+          <div class="project-card">
+            <h3>YouTube Project 1</h3>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
-.project-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  background: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
-}
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 TR4 Portfolio. All rights reserved.</p>
+  </footer>
 
-.project-btn:hover {
-  background: #0056b3;
-}
-
-.yt-btn {
-  background: #ff0000;
-}
-
-.yt-btn:hover {
-  background: #cc0000;
-}
-
-.reels-overlay, .youtube-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,0.7);
-  z-index: 1000;
-}
-
-.reels-popup, .youtube-popup {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.projects-section {
-  text-align: left;
-}
-
-.projects-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.project-card {
-  background: #f1f1f1;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Contact Section */
-.contact {
-  background: #fff;
-  padding: 20px;
-  margin: 40px auto 0;
-  border-top: 2px solid #eee;
-}
-
-.contact h2 {
-  margin-bottom: 15px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.social-icons a {
-  font-size: 36px; /* حجم الأيقونات */
-  color: #333;
-  transition: transform 0.3s, color 0.3s;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2);
-  color: #007bff;
-}
-
-footer {
-  margin-top: 20px;
-  padding: 10px;
-  background: #222;
-  color: white;
-}
+  <script>
+    const reelsOverlay = document.getElementById('reelsOverlay');
+    const youtubeOverlay = document.getElementById('youtubeOverlay');
+    document.getElementById('showReelsBtn').onclick = () => reelsOverlay.style.display = 'flex';
+    document.getElementById('showYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'flex';
+    document.getElementById('closeReelsBtn').onclick = () => reelsOverlay.style.display = 'none';
+    document.getElementById('closeYoutubeBtn').onclick = () => youtubeOverlay.style.display = 'none';
+  </script>
+</body>
+</html>
