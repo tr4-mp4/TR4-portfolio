@@ -4,311 +4,92 @@
   <meta charset="UTF-8">
   <title>TR4 Portfolio - Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
-      min-height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #fff;
-    }
-    .container {
-      max-width: 600px;
-      margin: 60px auto 30px auto;
-      background: rgba(0,0,0,0.3);
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(75,0,0,0.18);
-      padding: 40px 32px;
-      text-align: center;
-    }
-    h1 {
-      font-weight: 900;
-      font-size: 2.6rem;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-    p {
-      font-size: 1.18rem;
-      margin-bottom: 26px;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .project-btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
-      color: #fff;
-      font-weight: 700;
-      padding: 14px 38px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      box-shadow: 0 2px 12px rgba(220,24,88,0.12);
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s;
-      margin-top: 0;
-    }
-    .project-btn:hover {
-      background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
-    }
-    .yt-btn {
-      background: linear-gradient(90deg, #ff0000, #ffb347 80%);
-      color: #fff;
-    }
-    .yt-btn:hover {
-      background: linear-gradient(90deg, #d60000, #ffd580 80%);
-      color: #fff;
-    }
-    .reels-overlay, .youtube-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(40,0,0,0.80);
-      z-index: 1000;
-      overflow-y: auto;
-      opacity: 0;
-      transition: opacity .45s;
-    }
-    .reels-overlay.active, .youtube-overlay.active { display: block; opacity: 1;}
-    .reels-popup, .youtube-popup {
-      max-width: 1200px;
-      margin: 48px auto;
-      background: rgba(180,0,0,0.96);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      padding: 36px 22px 28px 22px;
-      position: relative;
-      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
-    }
-    @keyframes popupIn {
-      from { transform: translateY(40px) scale(0.97); opacity: 0;}
-      to { transform: translateY(0) scale(1); opacity: 1;}
-    }
-    .close-btn {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: #4b0000;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
-      z-index: 2;
-    }
-    .close-btn:hover { background: #800000; }
-    .projects-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
-    }
-    .projects-section h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 22px;
-    }
-    .projects-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 32px;
-      justify-content: center;
-      align-items: stretch;
-    }
-    .project-card {
-      background: rgba(255,255,255,0.10);
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
-      padding: 28px 18px 22px 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      transition: transform 0.22s, box-shadow 0.22s;
-      min-height: 370px;
-    }
-    .project-card:hover {
-      transform: translateY(-6px) scale(1.045);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
-      background: rgba(255,255,255,0.15);
-    }
-    .video-container {
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 16/9;
-      margin: 18px auto 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #000;
-      border-radius: 12px;
-      display: block;
-    }
-    .youtube-file-container {
-      width: 100%;
-      max-width: 540px;
-      aspect-ratio: 16/9;
-      margin: 18px auto 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .youtube-file-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: #000;
-      border-radius: 12px;
-      display: block;
-    }
-    @media (max-width: 900px) {
-      .projects-section { padding: 0 2px;}
-      .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
-      .project-card { min-height: 260px; padding: 14px 4px;}
-      .video-container, .youtube-file-container { max-width: 100%; min-width: 160px;}
-    }
-    @media (max-width: 600px) {
-      .projects-section h2 { font-size:1.3rem;}
-      .projects-list { grid-template-columns: 1fr; }
-    }
-    footer {
-      text-align: center;
-      padding: 26px 0 10px 0;
-      color: #eee;
-      font-size: 1rem;
-      background: none;
-    }
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0 0 0;
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-      font-size: 1.08rem;
-      flex-wrap: wrap;
-    }
-    .contact-list li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .contact-list a {
-      color: #ffd157;
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.2s;
-    }
-    .contact-list a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    .contact-logo {
-      width: 22px;
-      vertical-align: middle;
-      margin-right: 2px;
-    }
-  </style>
+  <link href="styles.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>TR4 Portfolio</h1>
-    <p>Welcome to my portfolio.<br>
-      Here you will find my latest reel projects.
-    </p>
+    <p>أهلاً بك في محفظة أعمالي!<br>هنا تجد مجموعة من أعمالي في المونتاج والتصميم.</p>
     <div class="btn-group">
       <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
       <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
     </div>
   </div>
+
   <!-- Reel Projects Overlay -->
   <div class="reels-overlay" id="reelsOverlay">
     <div class="reels-popup">
       <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2>Reel Projects</h2>
+        <h2>🎬 Reel Projects</h2>
         <div class="projects-list">
-          <!-- Reel Project Cards with real links -->
+
           <div class="project-card">
-            <h3>Reel Project 1</h3>
-            <p>Watch this creative reel directly.</p>
+            <h3>إعلان Nike – مونتاج رياضي احترافي</h3>
+            <p>مونتاج إعلاني باستخدام After Effects وPremiere Pro. حركة ديناميكية وموسيقى حماسية.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
           <div class="project-card">
-            <h3>Reel Project 2</h3>
-            <p>Another reel from my work collection.</p>
+            <h3>تيزر منتج تقني – عرض مميز</h3>
+            <p>برومو مختصر لمنتج تقني باستخدام عناصر نصية متحركة وإضاءة ناعمة.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
           <div class="project-card">
-            <h3>Reel Project 3</h3>
-            <p>Discover this new reel in my portfolio.</p>
+            <h3>إعلان مطعم – ستايل سينمائي</h3>
+            <p>تصوير ومونتاج إعلان لأحد المطاعم، تم التركيز على الألوان الدافئة والتقطيع السريع.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
           <div class="project-card">
-            <h3>Reel Project 4</h3>
-            <p>Reel from my creative work.</p>
+            <h3>مونتاج حفل تخرّج</h3>
+            <p>فيديو قصير يوثق لحظات تخرّج الطلاب، بإضافة مؤثرات بصرية وموسيقى حماسية.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
           <div class="project-card">
-            <h3>Reel Project 5</h3>
-            <p>New visual reel.</p>
+            <h3>إعلان موضة – أزياء شبابية</h3>
+            <p>مونتاج احترافي باستخدام لقطات سريعة وتأثيرات ألوان نابضة بالحياة.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
           <div class="project-card">
-            <h3>Reel Project 6</h3>
-            <p>Fresh reel from my collection.</p>
+            <h3>مونتاج سوشيال ميديا – سريع الإيقاع</h3>
+            <p>فيديو مخصص لإنستغرام وتيك توك، باستخدام ترانزيشنات سريعة وتأثيرات لونية جذابة.</p>
             <div class="video-container">
               <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
             </div>
           </div>
+
         </div>
       </section>
     </div>
   </div>
-  <!-- Youtube Project Overlay -->
+
+  <!-- Youtube Projects Overlay -->
   <div class="youtube-overlay" id="youtubeOverlay">
     <div class="youtube-popup">
       <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2>YouTube Projects</h2>
+        <h2>📺 YouTube Projects</h2>
         <div class="youtube-file-container">
           <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
         </div>
       </section>
     </div>
   </div>
+
   <footer>
     <div>
       &copy; TR4-mp4 2025. All rights reserved.
@@ -328,8 +109,9 @@
       </li>
     </ul>
   </footer>
+
   <script>
-    // Show/hide reels overlay
+    // Reel overlay
     const showReelsBtn = document.getElementById('showReelsBtn');
     const reelsOverlay = document.getElementById('reelsOverlay');
     const closeReelsBtn = document.getElementById('closeReelsBtn');
@@ -340,7 +122,7 @@
       if (e.target === reelsOverlay) reelsOverlay.classList.remove('active');
     }
 
-    // Show/hide youtube overlay
+    // YouTube overlay
     const showYoutubeBtn = document.getElementById('showYoutubeBtn');
     const youtubeOverlay = document.getElementById('youtubeOverlay');
     const closeYoutubeBtn = document.getElementById('closeYoutubeBtn');
@@ -351,6 +133,7 @@
       if (e.target === youtubeOverlay) youtubeOverlay.classList.remove('active');
     }
 
+    // ESC key
     document.addEventListener('keydown', function(e){
       if (e.key === "Escape") {
         reelsOverlay.classList.remove('active');
