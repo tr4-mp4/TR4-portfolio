@@ -1,56 +1,116 @@
+/* الخط العام */
 body {
   background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
   min-height: 100vh;
   margin: 0;
   font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
   color: #fff;
+  line-height: 1.6;
 }
 
+/* الحاوية الرئيسية */
 .container {
   max-width: 600px;
   margin: 60px auto 30px auto;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(75,0,0,0.18);
+  box-shadow: 0 8px 24px rgba(75, 0, 0, 0.18);
   padding: 40px 32px;
   text-align: center;
 }
 
+/* العنوان الرئيسي */
 h1 {
   font-weight: 900;
   font-size: 2.6rem;
   margin-bottom: 20px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  color: #ffd157;
 }
 
+/* النص العادي */
 p {
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   margin-bottom: 26px;
+  color: #f0f0f0;
 }
 
-.button {
+/* أزرار */
+.project-btn, .yt-btn {
   display: inline-block;
-  background: linear-gradient(90deg, #ff3333, #4b0000);
-  border: none;
-  border-radius: 25px;
+  background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
   color: #fff;
-  padding: 12px 34px;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(75,0,0,0.15);
-  cursor: pointer;
-  text-decoration: none;
   font-weight: 700;
-  transition: background 0.3s;
+  padding: 14px 38px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
 }
 
-.button:hover {
-  background: linear-gradient(90deg, #ff0000, #800000);
+.project-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
 }
 
+/* زر YouTube */
+.yt-btn {
+  background: linear-gradient(90deg, #ff0000, #ffb347 80%);
+}
+.yt-btn:hover {
+  background: linear-gradient(90deg, #d60000, #ffd580 80%);
+}
+
+/* الفوتر */
 footer {
   text-align: center;
   padding: 26px 0 10px 0;
   color: #eee;
   font-size: 1rem;
-  background: none;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-list a {
+  color: #ffd157;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+.contact-list a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.contact-logo {
+  width: 22px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+/* تحسين للأزرار في الشاشات الصغيرة */
+@media (max-width: 600px) {
+  .project-btn, .yt-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
 }
