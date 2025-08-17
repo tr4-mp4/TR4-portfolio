@@ -1,63 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TR4 Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>TR4 Portfolio - Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="TR4 Logo">
-      <h1>TR4 Portfolio</h1>
+  <div class="container">
+    <!-- اللوجو -->
+    <img src="logo.png" alt="TR4 Logo" class="site-logo">
+
+    <h1>TR4 Portfolio</h1>
+    <p>Welcome to my portfolio.<br> Here you will find my latest reel projects. </p>
+
+    <!-- About Me -->
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        أنا محمد، طالب ثانوي 📚 و Video Editor ✂️،  
+        بحب أشتغل كـ Content Creator وأشارك الناس شغلي.  
+        هدفي أقدم محتوى مختلف على YouTube و Reels  
+        بالإنجليزي 🎥، يكون مفيد وممتع وفي نفس الوقت من غير أي حاجة حرام.  
+        بحب دايمًا أتعلم حاجات جديدة وأطوّر من نفسي،  
+        وبشوف إن الإبداع هو المفتاح للنجاح. ✨
+      </p>
+    </section>
+
+    <div class="btn-group">
+      <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+      <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
     </div>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#reels">Reels</a>
-      <a href="#youtube">YouTube</a>
-      <a href="#contact">Contact Me</a>
-    </nav>
-  </header>
+  </div>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I'm TR4 — a university student, video editor, and content creator.  
-      I create engaging short-form videos (Reels & Shorts) with unique ideas, focusing on strange and economic facts.  
-      My goal is to inspire and entertain people while building a strong presence online.
-    </p>
-  </section>
-
-  <section id="reels" class="section">
-    <h2>My Reels</h2>
-    <p>Check out my latest Instagram reels showcasing creative video edits and unique concepts.</p>
-  </section>
-
-  <section id="youtube" class="section">
-    <h2>YouTube</h2>
-    <p>On my YouTube channel, I share short videos and creative edits to engage and entertain my audience.</p>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-icons">
-      <a href="https://www.instagram.com/yourusername" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="mailto:yourmail@example.com">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://wa.me/201027207797" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-      </a>
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>Reel Projects</h2>
+        <div class="projects-list">
+          <!-- Reel Project Cards -->
+          <div class="project-card">
+            <h3>Reel Project 1</h3>
+            <p>Watch this creative reel directly.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 2</h3>
+            <p>Another reel from my work collection.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 3</h3>
+            <p>Discover this new reel in my portfolio.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 4</h3>
+            <p>Reel from my creative work.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 5</h3>
+            <p>New visual reel.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>Reel Project 6</h3>
+            <p>Fresh reel from my collection.</p>
+            <div class="video-container">
+              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 
+  <!-- Youtube Project Overlay -->
+  <div class="youtube-overlay" id="youtubeOverlay">
+    <div class="youtube-popup">
+      <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
+      <section class="projects-section">
+        <h2>YouTube Projects</h2>
+        <div class="youtube-file-container">
+          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 TR4 Portfolio. All rights reserved.</p>
+    <div> &copy; TR4-mp4 2025. All rights reserved. </div>
+    <ul class="contact-list">
+      <li>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
+        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
+        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="contact-logo">
+        <a href="https://wa.me/201027207797" target="_blank">+20 102 720 7797</a>
+      </li>
+    </ul>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Show/hide reels overlay
+    const showReelsBtn = document.getElementById('showReelsBtn');
+    const reelsOverlay = document.getElementById('reelsOverlay');
+    const closeReelsBtn = document.getElementById('closeReelsBtn');
+    showReelsBtn.onclick = () => reelsOverlay.classList.add('active');
+    closeReelsBtn.onclick = () => reelsOverlay.classList.remove('active');
+    reelsOverlay.onclick = function(e) {
+      if (e.target === reelsOverlay) reelsOverlay.classList.remove('active');
+    }
+
+    // Show/hide youtube overlay
+    const showYoutubeBtn = document.getElementById('showYoutubeBtn');
+    const youtubeOverlay = document.getElementById('youtubeOverlay');
+    const closeYoutubeBtn = document.getElementById('closeYoutubeBtn');
+    showYoutubeBtn.onclick = () => youtubeOverlay.classList.add('active');
+    closeYoutubeBtn.onclick = () => youtubeOverlay.classList.remove('active');
+    youtubeOverlay.onclick = function(e) {
+      if (e.target === youtubeOverlay) youtubeOverlay.classList.remove('active');
+    }
+
+    // ESC close overlays
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") {
+        reelsOverlay.classList.remove('active');
+        youtubeOverlay.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
