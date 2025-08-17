@@ -1,174 +1,263 @@
-/* Variables & reset */
+/* --------------------------
+   VARIABLES & BASE RESET
+   -------------------------- */
 :root{
-  --bg1:#ff0000; --bg2:#4b0000;
-  --card: rgba(0,0,0,0.30);
-  --text: #ffffff;
-  --muted: #eee;
+  --bg1: #ff0000;
+  --bg2: #4b0000;
+  --card: rgba(0,0,0,0.28);
   --accent: #ffd157;
-  --popup: rgba(180,0,0,0.96);
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.9);
 }
 *{ box-sizing: border-box; }
 html,body{ height:100%; }
 body{
   margin:0;
   font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
-  color: var(--text);
+  color:var(--text);
   background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow-x: hidden; /* allow vertical scroll */
 }
 
-/* Main card */
+/* --------------------------
+   MAIN CARD / LAYOUT
+   -------------------------- */
 .container{
   width: min(720px, 96%);
-  margin: 60px auto 20px;
+  margin: 48px auto;
   background: var(--card);
   border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(75,0,0,0.18);
-  padding: 36px 28px;
+  padding: 32px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.20);
 }
+
+/* reveal basic (hidden initially) */
+.reveal{ opacity:0; transform: translateY(20px); will-change: transform, opacity; }
+
+/* when in view, animation uses CSS var --delay if present */
+.reveal.in-view{
+  animation: fadeUp 600ms cubic-bezier(.2,.9,.2,1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* small scale reveal (for icons) */
+.scale-stagger{ opacity:0; transform: scale(.85); }
+.scale-stagger.in-view{
+  animation: scaleIn 420ms cubic-bezier(.2,.9,.2,1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* --------------------------
+   LOGO / TITLE / LEAD
+   -------------------------- */
 .site-logo{
-  width:110px; height:110px; object-fit:cover;
-  border-radius:50%;
-  display:block; margin: 0 auto 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
 }
-.site-title{ font-weight:900; font-size:2.4rem; margin: 0 0 8px; }
-.lead{ color: var(--muted); opacity:0.95; margin-bottom: 14px; }
 
-/* About box */
+.site-title{
+  font-weight: 900;
+  font-size: 2.2rem;
+  margin: 8px 0;
+}
+
+.lead{
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+/* --------------------------
+   ABOUT
+   -------------------------- */
 .about{
-  margin-top: 20px;
-  padding: 16px 18px;
-  background: rgba(139,0,0,0.55);
+  background: rgba(139,0,0,0.44);
   border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18) inset, 0 2px 10px rgba(0,0,0,0.12);
+  padding: 16px;
+  margin-top: 12px;
+  box-shadow: inset 0 6px 18px rgba(0,0,0,0.18);
 }
-.about h2{ color: var(--accent); margin: 0 0 8px; font-size:1.4rem; font-weight:900; }
-.about p{ margin:0; line-height:1.65; font-size:1rem; }
+.about h2{ color:var(--accent); margin:0 0 8px; font-weight:900; }
+.about p{ line-height:1.6; margin:0; }
 
-/* Buttons */
+/* --------------------------
+   BUTTONS (optional)
+   -------------------------- */
 .btn-group{
-  display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
-  margin-top: 18px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:18px;
+  flex-wrap:wrap;
 }
 .project-btn{
-  display:inline-block; border:0; cursor:pointer;
-  padding: 12px 26px; border-radius:30px;
-  color:#fff; font-weight:800; font-size:1rem;
-  background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-  transition: transform .18s ease, box-shadow .18s ease;
+  border:0; cursor:pointer;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight:800;
+  color:#fff;
+  background: linear-gradient(90deg,#fd5949,#d6249f,#285AEB);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
 }
-.project-btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
 .yt-btn{ background: linear-gradient(90deg,#ff0000,#ffb347 80%); }
 
-/* Overlays (reels / youtube) */
-.overlay{
-  position: fixed; inset:0;
-  display:flex; align-items:flex-start; justify-content:center;
-  padding: 48px 16px;
-  background: rgba(40,0,0,0.80);
-  opacity: 0; pointer-events: none;
-  transition: opacity .35s ease;
-  z-index: 1200;
+/* --------------------------
+   PROJECTS GRID + STAGGER
+   -------------------------- */
+.projects{
+  margin-top: 22px;
 }
-.overlay.active{ opacity:1; pointer-events: auto; }
-.popup{
-  width: min(1200px, 100%);
-  background: var(--popup);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.18);
-  padding: 24px 20px;
-  position: relative;
-  animation: popupIn .45s cubic-bezier(.23,1.12,.64,1);
-}
-@keyframes popupIn{ from{ transform: translateY(30px) scale(.98); opacity:0 } to{ transform:none; opacity:1 } }
-.close-btn{
-  position:absolute; top:12px; right:14px;
-  background:#4b0000; color:#fff; border:0;
-  border-radius: 50%; width: 36px; height:36px; font-size:1.2rem; cursor:pointer; font-weight:bold;
-}
-.close-btn:hover{ background:#800000 }
+.projects h2{ color:var(--accent); margin-bottom:12px; font-weight:900; }
 
-/* Projects grid */
-.projects-section{ max-width:1200px; margin:0 auto; }
-.projects-section h2{ text-align:center; font-size:1.6rem; color:var(--accent); margin: 6px 0 12px; }
 .projects-list{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
+  margin-top: 12px;
 }
+
+/* each card is reveal + has CSS var --delay set by JS for stagger */
 .project-card{
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  transition: transform .22s ease, box-shadow .22s ease;
+  opacity:0; transform: translateY(26px);
+}
+.project-card.in-view{ opacity:1; transform:none; }
+
+/* small hover */
+.project-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.22); }
+
+.project-card h3{ margin: 0 0 8px; font-size:1.05rem; }
+.project-card p{ font-size:0.95rem; color: rgba(255,255,255,0.9); margin: 8px 0 12px; }
+
+/* video thumbnail box (visual placeholder) */
+.video-thumb{
+  height: 0;
+  padding-bottom: 56.25%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+  border-radius: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* small view button inside card */
+.view-btn{
+  padding: 8px 14px;
+  border-radius: 10px;
+  border:0;
   background: rgba(255,255,255,0.08);
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* --------------------------
+   OVERLAY (video player)
+   -------------------------- */
+.overlay{
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding: 40px 12px;
+  background: rgba(0,0,0,0.85);
+  opacity:0; pointer-events:none;
+  transition: opacity .25s ease;
+  z-index:1300;
+}
+.overlay.active{ opacity:1; pointer-events:auto; }
+
+/* popup area scrollable inside on mobile */
+.popup{
+  width: min(1000px, 98%);
+  max-height: 90vh;
+  background: rgba(20,0,0,0.98);
+  border-radius: 14px;
+  padding: 12px;
+  overflow: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  position: relative;
+}
+.close-btn{
+  position:absolute; top:10px; right:12px;
+  background:#4b0000; color:#fff; border:0;
+  width:38px; height:38px; border-radius:50%; font-size:1.2rem; cursor:pointer;
+}
+.overlay-content{ padding: 12px; }
+
+/* video wrapper ensures responsive iframe */
+.video-wrapper{ width:100%; aspect-ratio: 16/9; background:#000; border-radius:8px; overflow:hidden; }
+.video-wrapper iframe{ width:100%; height:100%; border:0; display:block; }
+
+/* --------------------------
+   CONTACT ICONS
+   -------------------------- */
+.contact{
+  margin-top: 18px;
+  width: min(720px, 96%);
+  background: rgba(0,0,0,0.18);
   border-radius: 12px;
   padding: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
   text-align:center;
+  margin-left: auto; margin-right: auto;
 }
-.project-card h3{ margin: 0 0 10px; font-size:1.05rem; }
+.contact h2{ color: var(--accent); margin: 6px 0 10px; font-weight:900; }
 
-/* Video container */
-.video-container, .youtube-file-container{
-  width:100%; aspect-ratio:16/9; border-radius:10px; overflow:hidden; background:#000;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
-}
-.video-container iframe, .youtube-file-container iframe{ width:100%; height:100%; border:0; display:block; }
-
-/* Contact box */
-.contact{
-  width: min(720px, 96%);
-  margin: 18px auto 28px;
-  background: rgba(0,0,0,0.22);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
-  padding: 14px 12px;
-  text-align:center;
-}
-.contact h2{ margin: 0 0 10px; color: var(--accent); font-weight:900; font-size:1.15rem; }
-
-/* Icon row */
-.icon-row{ display:flex; justify-content:center; gap: 18px; flex-wrap:wrap; padding:6px; }
+.icon-row{ display:flex; justify-content:center; gap: 14px; flex-wrap:wrap; padding:6px; }
 .icon-btn{
-  width: 56px; height:56px; display:inline-flex; align-items:center; justify-content:center;
-  border-radius: 12px; color:#fff; text-decoration:none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform .18s ease, filter .18s ease;
+  width:56px; height:56px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;
+  color:#fff; text-decoration:none; box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transform: translateY(0);
 }
-.icon-btn i{ font-size: 26px; line-height:1; }
-
 /* brand colors */
-.icon-btn.ig{
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+.icon-btn.ig{ background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.icon-btn.mail{ background: #EA4335; }
+.icon-btn.wa{ background: #25D366; }
+
+/* icons scale reveal animation on in-view via .in-view + --delay */
+.scale-stagger.in-view{ animation: scaleIn 420ms cubic-bezier(.2,.9,.2,1) both; animation-delay: var(--delay,0ms); }
+
+/* --------------------------
+   FOOTER
+   -------------------------- */
+footer{ text-align:center; padding: 12px 0 28px; color: rgba(255,255,255,0.85); }
+
+/* --------------------------
+   KEYFRAMES
+   -------------------------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.icon-btn.mail{ background: #EA4335; } /* Gmail red */
-.icon-btn.wa{ background: #25D366; } /* WhatsApp green */
-
-.icon-btn:hover{ transform: translateY(-4px); filter:brightness(1.05); }
-
-/* footer */
-footer{ text-align:center; color:#eee; padding: 14px 0 26px; }
-
-/* Responsive */
-@media (max-width: 720px){
-  .container{ margin: 30px 12px; padding: 26px 18px; }
-  .site-title{ font-size:1.9rem; }
-  .lead{ font-size:0.95rem; }
-  .about p{ font-size:0.95rem; }
-  .project-card h3{ font-size:1rem; }
-  .icon-btn{ width:52px; height:52px; }
-  .icon-btn i{ font-size:24px; }
-  .projects-list{ gap:12px; }
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.78); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@media (max-width: 420px){
-  .site-logo{ width:96px; height:96px; }
-  .site-title{ font-size:1.6rem; }
-  .btn-group{ gap:10px; }
-  .project-btn{ padding: 10px 18px; font-size:0.95rem; }
+/* --------------------------
+   RESPONSIVE
+   -------------------------- */
+@media (max-width: 720px) {
+  .container{ padding: 22px; margin: 28px auto; }
+  .site-title{ font-size: 1.6rem; }
+  .projects-list{ gap: 12px; }
   .icon-row{ gap: 12px; }
+  .icon-btn{ width:52px; height:52px; border-radius:10px; }
+  .video-thumb{ border-radius:8px; }
+}
+@media (max-width: 420px) {
+  .site-logo{ width:96px; height:96px; }
+  .container{ margin: 18px auto; padding: 18px; }
 }
