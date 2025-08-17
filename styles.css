@@ -1,3 +1,4 @@
+/* Base */
 body {
   background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
   min-height: 100vh;
@@ -16,6 +17,14 @@ body {
   text-align: center;
 }
 
+/* Logo */
+.site-logo {
+  width: 120px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
 h1 {
   font-weight: 900;
   font-size: 2.6rem;
@@ -23,34 +32,129 @@ h1 {
   letter-spacing: 2px;
 }
 
-p {
-  font-size: 1.18rem;
-  margin-bottom: 26px;
+p { font-size: 1.18rem; margin-bottom: 26px; }
+
+/* About */
+.about {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
 
-.button {
+.about h2 { font-size: 1.8rem; margin-bottom: 12px; color: #ffd157; }
+.about p { font-size: 1.1rem; line-height: 1.6; }
+
+/* Buttons */
+.btn-group { display: flex; flex-direction: column; gap: 16px; align-items: center; margin: 10px 0; }
+
+.project-btn {
   display: inline-block;
-  background: linear-gradient(90deg, #ff3333, #4b0000);
-  border: none;
-  border-radius: 25px;
+  background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
   color: #fff;
-  padding: 12px 34px;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(75,0,0,0.15);
-  cursor: pointer;
-  text-decoration: none;
   font-weight: 700;
+  padding: 14px 38px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 12px rgba(220,24,88,0.12);
+  cursor: pointer;
+  border: none;
   transition: background 0.3s;
 }
 
-.button:hover {
-  background: linear-gradient(90deg, #ff0000, #800000);
+.project-btn:hover { background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff); }
+
+.yt-btn { background: linear-gradient(90deg, #ff0000, #ffb347 80%); color: #fff; }
+.yt-btn:hover { background: linear-gradient(90deg, #d60000, #ffd580 80%); color: #fff; }
+
+/* Overlays */
+.reels-overlay, .youtube-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(40,0,0,0.80);
+  z-index: 1000;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity .45s;
 }
 
-footer {
-  text-align: center;
-  padding: 26px 0 10px 0;
-  color: #eee;
-  font-size: 1rem;
-  background: none;
+.reels-overlay.active, .youtube-overlay.active { display: block; opacity: 1; }
+
+.reels-popup, .youtube-popup {
+  max-width: 1200px;
+  margin: 48px auto;
+  background: rgba(180,0,0,0.96);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 36px 22px 28px 22px;
+  position: relative;
+  animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
 }
+
+@keyframes popupIn {
+  from { transform: translateY(40px) scale(0.97); opacity: 0; }
+  to   { transform: translateY(0)   scale(1);   opacity: 1; }
+}
+
+.close-btn {
+  position: absolute; top: 16px; right: 16px;
+  background: #4b0000; color: #fff;
+  border: none; border-radius: 50%;
+  width: 32px; height: 32px; font-size: 1.2rem; cursor: pointer; font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.09); z-index: 2;
+}
+
+.close-btn:hover { background: #800000; }
+
+/* Projects grid */
+.projects-section { max-width: 1200px; margin: 0 auto; padding: 0; }
+.projects-section h2 { text-align: center; font-size: 2rem; margin-bottom: 22px; }
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  justify-content: center; align-items: stretch;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.10);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+  padding: 28px 18px 22px 18px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  position: relative;
+  transition: transform 0.22s, box-shadow 0.22s;
+  min-height: 370px;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.045);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+  background: rgba(255,255,255,0.15);
+}
+
+.video-container {
+  width: 100%; max-width: 340px; aspect-ratio: 16/9; margin: 18px auto 0 auto;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+  background: #000; display: flex; align-items: center; justify-content: center;
+}
+
+.video-container iframe { width: 100%; height: 100%; border: none; background: #000; border-radius: 12px; display: block; }
+
+.youtube-file-container {
+  width: 100%; max-width: 540px; aspect-ratio: 16/9; margin: 18px auto 0 auto;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+  background: #000; display: flex; align-items: center; justify-content: center;
+}
+
+.youtube-file-container iframe { width: 100%; height: 100%; border: none; background: #000; border-radius: 12px; display: block; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .projects-section { padding: 0 2px; }
+  .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
