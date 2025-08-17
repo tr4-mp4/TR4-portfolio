@@ -9,9 +9,9 @@ body {
 .container {
   max-width: 600px;
   margin: 60px auto 30px auto;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0,0,0,0.3);
   border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(75, 0, 0, 0.18);
+  box-shadow: 0 8px 24px rgba(75,0,0,0.18);
   padding: 40px 32px;
   text-align: center;
 }
@@ -28,91 +28,29 @@ p {
   margin-bottom: 26px;
 }
 
-.project-btn {
+.button {
   display: inline-block;
-  background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+  background: linear-gradient(90deg, #ff3333, #4b0000);
+  border: none;
+  border-radius: 25px;
   color: #fff;
-  font-weight: 700;
-  padding: 14px 38px;
-  border-radius: 30px;
+  padding: 12px 34px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(75,0,0,0.15);
+  cursor: pointer;
   text-decoration: none;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 12px rgba(220, 24, 88, 0.12);
-  cursor: pointer;
-  border: none;
+  font-weight: 700;
   transition: background 0.3s;
-  margin-top: 0;
 }
 
-.project-btn:hover {
-  background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
+.button:hover {
+  background: linear-gradient(90deg, #ff0000, #800000);
 }
 
-.yt-btn {
-  background: linear-gradient(90deg, #ff0000, #ffb347 80%);
-  color: #fff;
+footer {
+  text-align: center;
+  padding: 26px 0 10px 0;
+  color: #eee;
+  font-size: 1rem;
+  background: none;
 }
-
-.yt-btn:hover {
-  background: linear-gradient(90deg, #d60000, #ffd580 80%);
-  color: #fff;
-}
-
-.reels-overlay,
-.youtube-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(40, 0, 0, 0.8);
-  z-index: 1000;
-  overflow-y: auto;
-  opacity: 0;
-  transition: opacity 0.45s;
-}
-
-.reels-overlay.active,
-.youtube-overlay.active {
-  display: block;
-  opacity: 1;
-}
-
-.reels-popup,
-.youtube-popup {
-  max-width: 1200px;
-  margin: 48px auto;
-  background: rgba(180, 0, 0, 0.96);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  padding: 36px 22px 28px 22px;
-  position: relative;
-  animation: popupIn 0.55s cubic-bezier(0.23, 1.12, 0.64, 1);
-}
-
-@keyframes popupIn {
-  from {
-    transform: translateY(40px) scale(0.97);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
-.close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: #4b0000;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 2px 8px
