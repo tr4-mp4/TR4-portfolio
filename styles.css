@@ -1,25 +1,25 @@
-/* ===== Base ===== */
+/* ===== Variables / Base ===== */
 :root{
-  --bg1:#ff0000; --bg2:#4b0000;
+  --bg1:#ff0000; --bg2:#4b0000;      /* same gradient as your screenshot */
   --card:rgba(0,0,0,.30);
-  --text:#fff; --muted:#ddd;
-  --accent:#ffd157;
+  --text:#fff; --muted:#eee;
+  --accent:#ffd157;                   /* gold heading color */
   --popup:rgba(180,0,0,.96);
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+*{ box-sizing:border-box }
+html,body{ height:100% }
 body{
   margin:0;
-  font-family: 'Cairo','Segoe UI',Arial,sans-serif;
+  font-family:'Cairo','Segoe UI',Arial,sans-serif;
   color:var(--text);
   background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
 }
 
-/* ===== Container ===== */
+/* ===== Main Card (matches screenshot) ===== */
 .container{
   max-width: 720px;
-  margin: 60px auto 30px auto;
+  margin: 60px auto 30px;
   background: var(--card);
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(75,0,0,0.18);
@@ -27,48 +27,58 @@ body{
   text-align: center;
 }
 .site-logo{
-  width: 120px; height: 120px; object-fit: cover;
+  width: 110px; height: 110px; object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,.25);
   display:block; margin: 0 auto 16px;
 }
-h1{font-weight:900; font-size:2.4rem; margin:0 0 10px}
-.lead{color:var(--muted)}
+h1{
+  font-weight:900; font-size:2.4rem; letter-spacing:.5px;
+  margin: 0 0 10px;
+}
+.lead{ color:#f3f3f3; opacity:.92 }
 
-/* ===== About ===== */
+/* ===== About box (dark red like screenshot) ===== */
 .about{
-  margin-top: 28px;
+  margin-top: 24px;
   padding: 18px 20px;
-  background: rgba(255,255,255,.08);
+  background: rgba(139,0,0,.55);   /* dark red panel */
   border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  box-shadow: 0 8px 18px rgba(0,0,0,.18) inset, 0 2px 12px rgba(0,0,0,.15);
 }
-.about h2{ color: var(--accent); margin:0 0 8px; }
-.about p{ margin:0; line-height:1.65; }
+.about h2{ color: var(--accent); margin:0 0 8px; font-size:1.6rem; font-weight:900 }
+.about p{ margin:0; line-height:1.7; }
 
-/* ===== Buttons ===== */
-.btn-group{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:18px; }
-.project-btn{
-  background: linear-gradient(90deg,#fd5949,#d6249f,#285AEB);
-  color:#fff; font-weight:700;
-  padding: 12px 26px; border-radius: 30px; border:0; cursor:pointer;
-  box-shadow: 0 2px 12px rgba(220,24,88,.12);
-  transition: transform .15s ease, filter .2s;
+/* ===== Buttons (same vibe as screenshot) ===== */
+.btn-group{
+  display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+  margin-top: 18px;
 }
-.project-btn:hover{ transform: translateY(-1px); filter:brightness(1.05); }
-.yt-btn{ background: linear-gradient(90deg,#ff0000,#ffb347 80%); }
+.project-btn{
+  display:inline-block; border:0; cursor:pointer;
+  padding: 12px 26px; border-radius: 30px;
+  color:#fff; font-weight:800; font-size:1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,.22) inset;
+  background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
+  transition: transform .15s ease, filter .2s ease;
+}
+.project-btn:hover{ transform: translateY(-1px); filter:brightness(1.05) }
+.yt-btn{
+  background: linear-gradient(90deg, #ff0000, #ffb347 80%);
+  color:#fff;
+}
 
 /* ===== Overlays ===== */
 .overlay{
   position: fixed; inset:0;
-  display: flex; align-items: flex-start; justify-content: center;
+  display:flex; align-items:flex-start; justify-content:center;
   padding: 48px 16px;
   background: rgba(40,0,0,.80);
   opacity: 0; pointer-events: none;
   transition: opacity .35s ease;
   z-index: 1000;
 }
-.overlay.active{ opacity: 1; pointer-events: auto; }
+.overlay.active{ opacity:1; pointer-events:auto; }
 .popup{
   width: min(1200px, 100%);
   background: var(--popup);
@@ -86,8 +96,8 @@ h1{font-weight:900; font-size:2.4rem; margin:0 0 10px}
 }
 .close-btn:hover{ background:#800000 }
 
-/* ===== Projects grid ===== */
-.projects-section{ max-width: 1200px; margin:0 auto; }
+/* ===== Projects Grid ===== */
+.projects-section{ max-width:1200px; margin:0 auto; }
 .projects-section h2{ text-align:center; font-size:1.8rem; margin: 6px 0 12px; }
 .projects-list{
   display:grid;
@@ -99,11 +109,12 @@ h1{font-weight:900; font-size:2.4rem; margin:0 0 10px}
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(0,0,0,.14);
   padding: 18px 12px;
+  text-align:center;
 }
 .project-card h3{ margin: 0 0 10px }
 
-/* Video */
-.video-container{
+/* Video containers */
+.video-container, .youtube-file-container{
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
@@ -111,7 +122,8 @@ h1{font-weight:900; font-size:2.4rem; margin:0 0 10px}
   box-shadow: 0 2px 14px rgba(75,0,0,.18);
   background: #000;
 }
-.video-container iframe{ width:100%; height:100%; border:0; display:block; }
+.video-container iframe,
+.youtube-file-container iframe{ width:100%; height:100%; border:0; display:block; }
 
 /* ===== Contact box (bottom) ===== */
 .contact{
@@ -123,29 +135,38 @@ h1{font-weight:900; font-size:2.4rem; margin:0 0 10px}
   padding: 18px 16px 22px;
   text-align:center;
 }
-.contact h2{ margin: 0 0 12px; font-size:1.4rem; color: var(--accent); }
+.contact h2{ margin: 0 0 12px; font-size:1.3rem; color: var(--accent); font-weight:900 }
 
-.social-icons{
-  display:flex; justify-content:center; gap: 24px;
+.icon-row{
+  display:flex; justify-content:center; gap: 18px; flex-wrap:wrap;
 }
-.social-icons a{
+
+/* Icon button base */
+.icon-btn{
+  width: 56px; height: 56px;
+  border-radius: 14px;
   display:inline-flex; align-items:center; justify-content:center;
-  width: 52px; height: 52px; /* مربع صغير متساوي */
-  border-radius: 12px;
-  background: rgba(255,255,255,.10);
-  transition: transform .2s ease, background-color .2s ease, color .2s ease;
-  color:#fff; text-decoration:none;
+  text-decoration:none; color:#fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .18s ease, filter .18s ease;
 }
-.social-icons a i{
-  font-size: 28px; /* حجم موحّد وواضح */
-  line-height: 1;
-}
-.social-icons a:hover{ transform: translateY(-2px); background: rgba(255,255,255,.18); }
 
-/* اختيارات ألوان عند الـ hover لكل أيقونة (خياري للتوضيح) */
-.social-icons a[aria-label="Instagram"]:hover{ color:#ff69b4; }
-.social-icons a[aria-label="Email"]:hover{ color:#ffd157; }
-.social-icons a[aria-label="WhatsApp"]:hover{ color:#25D366; }
+/* Brand colors (REAL) */
+.icon-btn.ig{
+  /* Instagram official multi-color gradient */
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.icon-btn.mail{
+  /* Gmail red */
+  background:#EA4335;
+}
+.icon-btn.wa{
+  /* WhatsApp green */
+  background:#25D366;
+}
+.icon-btn i{ font-size: 26px; line-height:1; }
+
+.icon-btn:hover{ transform: translateY(-2px); filter:brightness(1.06) }
 
 /* ===== Footer ===== */
 footer{
@@ -154,11 +175,11 @@ footer{
   color:#eee;
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive tweaks ===== */
 @media (max-width: 720px){
   .container{ margin: 40px 12px 20px; padding: 28px 20px; }
   .projects-list{ grid-template-columns: 1fr; }
-  .social-icons{ gap: 16px; }
-  .social-icons a{ width: 48px; height: 48px; }
-  .social-icons a i{ font-size: 26px; }
+  .icon-row{ gap: 14px; }
+  .icon-btn{ width:52px; height:52px; }
+  .icon-btn i{ font-size:24px; }
 }
