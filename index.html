@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>TR4 Portfolio - Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* ======== التنسيقات العامة ======== */
     body {
       background: linear-gradient(135deg, #ff0000 0%, #4b0000 100%);
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      direction: rtl;
-      text-align: center;
     }
     .container {
       max-width: 600px;
-      margin: 60px auto 30px;
-      background: rgba(0, 0, 0, 0.3);
+      margin: 60px auto 30px auto;
+      background: rgba(0,0,0,0.3);
       border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(75, 0, 0, 0.18);
+      box-shadow: 0 8px 24px rgba(75,0,0,0.18);
       padding: 40px 32px;
+      text-align: center;
     }
     h1 {
       font-weight: 900;
@@ -32,9 +30,7 @@
     p {
       font-size: 1.18rem;
       margin-bottom: 26px;
-      line-height: 1.4;
     }
-    /* ======== أزرار ======== */
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -44,6 +40,7 @@
       margin-bottom: 10px;
     }
     .project-btn {
+      display: inline-block;
       background: linear-gradient(90deg, #fd5949, #d6249f, #285AEB);
       color: #fff;
       font-weight: 700;
@@ -51,47 +48,44 @@
       border-radius: 30px;
       text-decoration: none;
       font-size: 1.2rem;
-      box-shadow: 0 2px 12px rgba(220, 24, 88, 0.12);
+      box-shadow: 0 2px 12px rgba(220,24,88,0.12);
       cursor: pointer;
       border: none;
       transition: background 0.3s;
-      user-select: none;
+      margin-top: 0;
     }
     .project-btn:hover {
       background: linear-gradient(90deg, #ff6a60, #fd2d8c, #2e97ff);
     }
     .yt-btn {
       background: linear-gradient(90deg, #ff0000, #ffb347 80%);
+      color: #fff;
     }
     .yt-btn:hover {
       background: linear-gradient(90deg, #d60000, #ffd580 80%);
+      color: #fff;
     }
-    /* ======== الـ Overlay (الشاشة الداكنة) ======== */
-    .overlay {
+    .reels-overlay, .youtube-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(40, 0, 0, 0.85);
+      background: rgba(40,0,0,0.80);
       z-index: 1000;
       overflow-y: auto;
       opacity: 0;
-      transition: opacity 0.45s ease;
-      direction: rtl;
+      transition: opacity .45s;
     }
-    .overlay.active {
-      display: block;
-      opacity: 1;
-    }
-    .popup {
+    .reels-overlay.active, .youtube-overlay.active { display: block; opacity: 1;}
+    .reels-popup, .youtube-popup {
       max-width: 1200px;
       margin: 48px auto;
-      background: rgba(180, 0, 0, 0.96);
+      background: rgba(180,0,0,0.96);
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-      padding: 36px 22px 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 36px 22px 28px 22px;
       position: relative;
-      animation: popupIn 0.55s cubic-bezier(.23, 1.12, .64, 1);
+      animation: popupIn 0.55s cubic-bezier(.23,1.12,.64,1);
     }
     @keyframes popupIn {
       from { transform: translateY(40px) scale(0.97); opacity: 0;}
@@ -108,19 +102,19 @@
       font-size: 1.2rem;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
       z-index: 2;
-      user-select: none;
-      transition: background 0.2s ease;
     }
-    .close-btn:hover {
-      background: #800000;
+    .close-btn:hover { background: #800000; }
+    .projects-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
     }
-    /* ======== قائمة المشاريع ======== */
     .projects-section h2 {
+      text-align: center;
       font-size: 2rem;
       margin-bottom: 22px;
-      color: #fff;
     }
     .projects-list {
       display: grid;
@@ -130,10 +124,10 @@
       align-items: stretch;
     }
     .project-card {
-      background: rgba(255, 255, 255, 0.10);
+      background: rgba(255,255,255,0.10);
       border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
-      padding: 28px 18px 22px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+      padding: 28px 18px 22px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -141,21 +135,20 @@
       position: relative;
       transition: transform 0.22s, box-shadow 0.22s;
       min-height: 370px;
-      color: #fff;
     }
     .project-card:hover {
       transform: translateY(-6px) scale(1.045);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.19);
-      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+      background: rgba(255,255,255,0.15);
     }
     .video-container {
       width: 100%;
       max-width: 340px;
-      aspect-ratio: 16 / 9;
-      margin: 18px auto 0;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 14px rgba(75, 0, 0, 0.18);
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
       background: #000;
       display: flex;
       align-items: center;
@@ -169,48 +162,53 @@
       border-radius: 12px;
       display: block;
     }
-    /* ======== الاستجابة ======== */
+    .youtube-file-container {
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 16/9;
+      margin: 18px auto 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px rgba(75,0,0,0.18);
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .youtube-file-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+      border-radius: 12px;
+      display: block;
+    }
     @media (max-width: 900px) {
-      .projects-list {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 14px;
-      }
-      .project-card {
-        min-height: 260px;
-        padding: 14px 8px;
-      }
-      .video-container {
-        max-width: 100%;
-        min-width: 160px;
-      }
+      .projects-section { padding: 0 2px;}
+      .projects-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;}
+      .project-card { min-height: 260px; padding: 14px 4px;}
+      .video-container, .youtube-file-container { max-width: 100%; min-width: 160px;}
     }
     @media (max-width: 600px) {
-      .projects-section h2 {
-        font-size: 1.3rem;
-      }
-      .projects-list {
-        grid-template-columns: 1fr;
-      }
+      .projects-section h2 { font-size:1.3rem;}
+      .projects-list { grid-template-columns: 1fr; }
     }
-    /* ======== الفوتر ======== */
     footer {
       text-align: center;
-      padding: 26px 0 10px;
+      padding: 26px 0 10px 0;
       color: #eee;
       font-size: 1rem;
       background: none;
-      user-select: none;
     }
     .contact-list {
       list-style: none;
       padding: 0;
-      margin: 20px 0 0;
+      margin: 20px 0 0 0;
       display: flex;
       justify-content: center;
       gap: 22px;
       font-size: 1.08rem;
       flex-wrap: wrap;
-      color: #ffd157;
     }
     .contact-list li {
       display: flex;
@@ -221,7 +219,7 @@
       color: #ffd157;
       text-decoration: none;
       font-weight: 700;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
     .contact-list a:hover {
       color: #fff;
@@ -237,83 +235,128 @@
 <body>
   <div class="container">
     <h1>TR4 Portfolio</h1>
-    <p>مرحباً بك في محفظة أعمالي.<br>هنا تجد أحدث مشاريع الريلز.</p>
+    <p>Welcome to my portfolio.<br>
+      Here you will find my latest reel projects.
+    </p>
     <div class="btn-group">
-      <button class="project-btn" id="showReelsBtn" type="button">مشاريع الريلز</button>
-      <button class="project-btn yt-btn" id="showYoutubeBtn" type="button">مشاريع يوتيوب</button>
+      <a class="project-btn" id="showReelsBtn" href="javascript:void(0)">Reel Projects</a>
+      <a class="project-btn yt-btn" id="showYoutubeBtn" href="javascript:void(0)">YouTube Projects</a>
     </div>
   </div>
-
-  <!-- شاشة الريلز -->
-  <div class="overlay" id="reelsOverlay" aria-hidden="true" role="dialog" aria-labelledby="reelsTitle" tabindex="-1">
-    <div class="popup">
-      <button class="close-btn" id="closeReelsBtn" aria-label="إغلاق">&times;</button>
+  <!-- Reel Projects Overlay -->
+  <div class="reels-overlay" id="reelsOverlay">
+    <div class="reels-popup">
+      <button class="close-btn" id="closeReelsBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2 id="reelsTitle">مشاريع الريلز</h2>
+        <h2>Reel Projects</h2>
         <div class="projects-list">
+          <!-- Reel Project Cards with real links -->
           <div class="project-card">
-            <h3>مشروع ريل 1</h3>
-            <p>شاهد هذا الريل الإبداعي مباشرة.</p>
+            <h3>Reel Project 1</h3>
+            <p>Watch this creative reel directly.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
             </div>
           </div>
           <div class="project-card">
-            <h3>مشروع ريل 2</h3>
-            <p>ريل آخر من مجموعتي.</p>
+            <h3>Reel Project 2</h3>
+            <p>Another reel from my work collection.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
             </div>
           </div>
           <div class="project-card">
-            <h3>مشروع ريل 3</h3>
-            <p>اكتشف هذا الريل الجديد.</p>
+            <h3>Reel Project 3</h3>
+            <p>Discover this new reel in my portfolio.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
             </div>
           </div>
           <div class="project-card">
-            <h3>مشروع ريل 4</h3>
-            <p>ريل من أعمالي الإبداعية.</p>
+            <h3>Reel Project 4</h3>
+            <p>Reel from my creative work.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
             </div>
           </div>
           <div class="project-card">
-            <h3>مشروع ريل 5</h3>
-            <p>ريل بصري جديد.</p>
+            <h3>Reel Project 5</h3>
+            <p>New visual reel.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
             </div>
           </div>
           <div class="project-card">
-            <h3>مشروع ريل 6</h3>
-            <p>ريل جديد من مجموعتي.</p>
+            <h3>Reel Project 6</h3>
+            <p>Fresh reel from my collection.</p>
             <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay" allowfullscreen></iframe>
+              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
             </div>
           </div>
         </div>
       </section>
     </div>
   </div>
-
-  <!-- شاشة اليوتيوب -->
-  <div class="overlay" id="youtubeOverlay" aria-hidden="true" role="dialog" aria-labelledby="youtubeTitle" tabindex="-1">
-    <div class="popup">
-      <button class="close-btn" id="closeYoutubeBtn" aria-label="إغلاق">&times;</button>
+  <!-- Youtube Project Overlay -->
+  <div class="youtube-overlay" id="youtubeOverlay">
+    <div class="youtube-popup">
+      <button class="close-btn" id="closeYoutubeBtn" title="Close">&times;</button>
       <section class="projects-section">
-        <h2 id="youtubeTitle">مشاريع يوتيوب</h2>
-        <div class="video-container" style="max-width: 540px; margin: 18px auto 0;">
-          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay" allowfullscreen></iframe>
+        <h2>YouTube Projects</h2>
+        <div class="youtube-file-container">
+          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
         </div>
       </section>
     </div>
   </div>
-
   <footer>
-    <div>© TR4-mp4 2025. جميع الحقوق محفوظة.</div>
+    <div>
+      &copy; TR4-mp4 2025. All rights reserved.
+    </div>
     <ul class="contact-list">
       <li>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="إنستجرام" class="contact-logo" />
-        <a href="https://instagram.com/mo7amed.tr4" target
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="contact-logo">
+        <a href="https://instagram.com/mo7amed.tr4" target="_blank">@mo7amed.tr4</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="contact-logo">
+        <a href="mailto:m7y.work@gmail.com">m7y.work@gmail.com</a>
+      </li>
+      <li>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="contact-logo">
+        <a href="https://wa.me/201027207797" target="_blank">+20 102 720 7797</a>
+      </li>
+    </ul>
+  </footer>
+  <script>
+    // Show/hide reels overlay
+    const showReelsBtn = document.getElementById('showReelsBtn');
+    const reelsOverlay = document.getElementById('reelsOverlay');
+    const closeReelsBtn = document.getElementById('closeReelsBtn');
+
+    showReelsBtn.onclick = () => reelsOverlay.classList.add('active');
+    closeReelsBtn.onclick = () => reelsOverlay.classList.remove('active');
+    reelsOverlay.onclick = function(e) {
+      if (e.target === reelsOverlay) reelsOverlay.classList.remove('active');
+    }
+
+    // Show/hide youtube overlay
+    const showYoutubeBtn = document.getElementById('showYoutubeBtn');
+    const youtubeOverlay = document.getElementById('youtubeOverlay');
+    const closeYoutubeBtn = document.getElementById('closeYoutubeBtn');
+
+    showYoutubeBtn.onclick = () => youtubeOverlay.classList.add('active');
+    closeYoutubeBtn.onclick = () => youtubeOverlay.classList.remove('active');
+    youtubeOverlay.onclick = function(e) {
+      if (e.target === youtubeOverlay) youtubeOverlay.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") {
+        reelsOverlay.classList.remove('active');
+        youtubeOverlay.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
