@@ -5,118 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TR4 Portfolio</title>
 
-  <!-- Font (Cairo) + Font Awesome -->
+  <!-- Font Cairo (optional) + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <!-- Main stylesheet (make sure file is styles.css in same folder) -->
+  <!-- Main stylesheet (must be styles.css) -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="container" role="main">
-    <!-- Logo -->
-    <img src="logo.png" alt="TR4 Logo" class="site-logo">
 
-    <!-- Title + intro -->
-    <h1 class="site-title">TR4 Portfolio</h1>
-    <p class="lead">Welcome to my portfolio.<br>Here you will find my latest reel & YouTube projects.</p>
+  <main class="container" role="main">
+    <!-- logo + title -->
+    <img src="logo.png" alt="TR4 Logo" class="site-logo reveal" data-reveal>
+    <h1 class="site-title reveal" data-reveal>TR4 Portfolio</h1>
+    <p class="lead reveal" data-reveal>Welcome — here you will find my Reels & YouTube projects.</p>
 
     <!-- About -->
-    <section class="about" aria-labelledby="about-title">
-      <h2 id="about-title">About Me</h2>
+    <section id="about" class="about reveal" data-reveal>
+      <h2>About Me</h2>
       <p>
-        Hi — I’m Mohamed. I’m a <strong>university student</strong>, <strong>video editor</strong> and
-        <strong>content creator</strong>. I make short-form Reels and YouTube projects to share creative ideas
-        in a clear and inspiring way. 🎬
+        Hi — I’m Mohamed. I’m a <strong>university student</strong>, <strong>video editor</strong>, and
+        <strong>content creator</strong>. I make short-form Reels and YouTube projects to share creative ideas in a clear, inspiring way.
       </p>
     </section>
 
-    <!-- Buttons -->
-    <div class="btn-group" role="group" aria-label="Projects buttons">
-      <button class="project-btn" id="showReelsBtn" type="button">Reel Projects</button>
-      <button class="project-btn yt-btn" id="showYoutubeBtn" type="button">YouTube Projects</button>
+    <!-- Buttons (optional global) -->
+    <div class="btn-group reveal" data-reveal>
+      <button class="project-btn" id="openAllReels">Open Reel Projects</button>
+      <button class="project-btn yt-btn" id="openAllYoutube">Open YouTube Project</button>
     </div>
+
+    <!-- Projects grid -->
+    <section id="projects" class="projects reveal" data-reveal>
+      <h2>Projects</h2>
+      <div class="projects-list" id="projectsList">
+        <!-- Each card has a data-video attribute for overlay (Google Drive preview links used as example) -->
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview">
+          <h3>Reel Project 1</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>Watch this creative reel.</p>
+          <button class="view-btn">View</button>
+        </article>
+
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview">
+          <h3>Reel Project 2</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>Another reel from my work collection.</p>
+          <button class="view-btn">View</button>
+        </article>
+
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview">
+          <h3>Reel Project 3</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>Discover this new reel in my portfolio.</p>
+          <button class="view-btn">View</button>
+        </article>
+
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview">
+          <h3>Reel Project 4</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>Reel from my creative work.</p>
+          <button class="view-btn">View</button>
+        </article>
+
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview">
+          <h3>Reel Project 5</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>New visual reel.</p>
+          <button class="view-btn">View</button>
+        </article>
+
+        <article class="project-card reveal stagger" data-video="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview">
+          <h3>Reel Project 6</h3>
+          <div class="video-thumb" aria-hidden="true"></div>
+          <p>Fresh reel from my collection.</p>
+          <button class="view-btn">View</button>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <!-- Reels overlay -->
-  <div class="overlay" id="reelsOverlay" aria-hidden="true" role="dialog" aria-label="Reel Projects">
-    <div class="popup" role="document">
-      <button class="close-btn" id="closeReelsBtn" aria-label="Close">&times;</button>
-      <section class="projects-section" aria-labelledby="reels-title">
-        <h2 id="reels-title">Reel Projects</h2>
-        <div class="projects-list">
-          <article class="project-card">
-            <h3>Reel Project 1</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/141KUXa8qeWHcnubmv6pMZ8tIqxshUME_/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>Reel Project 2</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1DoV9YE-x43MHlnMUxpiqXWDfk61QD39t/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>Reel Project 3</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1pILzAIiEIrQUi09KgXck5sDf9y-ZmgpW/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>Reel Project 4</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1-t29uLGZ_4CRFnyyNdRR7D3iuqU6Bus2/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>Reel Project 5</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1Og-SYCrZJkvdhgVWjoGr8R0v7e6KiUHI/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <h3>Reel Project 6</h3>
-            <div class="video-container">
-              <iframe src="https://drive.google.com/file/d/1UhCrAkOD123Qit7ZhPqs2XSPV4mtfU5e/preview" allow="autoplay"></iframe>
-            </div>
-          </article>
+  <!-- Video overlay (fullscreen, scrollable inside on mobile) -->
+  <div id="videoOverlay" class="overlay" aria-hidden="true" role="dialog" aria-label="Video player">
+    <div class="popup">
+      <button id="closeOverlay" class="close-btn" aria-label="Close">&times;</button>
+      <div class="overlay-content">
+        <div class="video-wrapper">
+          <iframe id="overlayIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 
-  <!-- YouTube overlay -->
-  <div class="overlay" id="youtubeOverlay" aria-hidden="true" role="dialog" aria-label="YouTube Projects">
-    <div class="popup" role="document">
-      <button class="close-btn" id="closeYoutubeBtn" aria-label="Close">&times;</button>
-      <section class="projects-section" aria-labelledby="yt-title">
-        <h2 id="yt-title">YouTube Projects</h2>
-        <div class="youtube-file-container">
-          <iframe src="https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview" allow="autoplay"></iframe>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- Contact box (bottom) -->
-  <section class="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Contact Me</h2>
+  <!-- Contact box bottom -->
+  <section class="contact reveal" data-reveal>
+    <h2>Contact Me</h2>
     <div class="icon-row" role="list">
-      <a role="listitem" class="icon-btn ig" href="https://instagram.com/mo7amed.tr4" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <a role="listitem" class="icon-btn ig scale-stagger" href="https://instagram.com/mo7amed.tr4" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
 
-      <a role="listitem" class="icon-btn mail" href="mailto:m7y.work@gmail.com" aria-label="Email">
+      <a role="listitem" class="icon-btn mail scale-stagger" href="mailto:m7y.work@gmail.com" aria-label="Email">
         <i class="fa-solid fa-envelope"></i>
       </a>
 
-      <a role="listitem" class="icon-btn wa" href="https://wa.me/201027207797" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <a role="listitem" class="icon-btn wa scale-stagger" href="https://wa.me/201027207797" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
     </div>
@@ -126,67 +119,105 @@
     <p>&copy; TR4-mp4 2025. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts: open/close overlays, ESC, click outside -->
   <script>
-    // safe query
-    const $ = (s) => document.querySelector(s);
+  // ====== IntersectionObserver for reveal-on-scroll with stagger support ======
+  document.addEventListener('DOMContentLoaded', () => {
+    // function to set stagger delays for elements with .stagger
+    const staggers = document.querySelectorAll('.stagger');
+    staggers.forEach((el, i) => {
+      // set CSS variable used for delay; 120ms between items
+      el.style.setProperty('--delay', `${i * 120}ms`);
+    });
 
-    const reelsOverlay = $('#reelsOverlay');
-    const youtubeOverlay = $('#youtubeOverlay');
-    const showReelsBtn = $('#showReelsBtn');
-    const showYoutubeBtn = $('#showYoutubeBtn');
-    const closeReelsBtn = $('#closeReelsBtn');
-    const closeYoutubeBtn = $('#closeYoutubeBtn');
+    const scaleStaggers = document.querySelectorAll('.scale-stagger');
+    scaleStaggers.forEach((el, i) => {
+      el.style.setProperty('--delay', `${(i + 1) * 180}ms`);
+    });
 
-    // Open handlers (check existence)
-    if (showReelsBtn && reelsOverlay) {
-      showReelsBtn.addEventListener('click', () => {
-        reelsOverlay.classList.add('active');
-        reelsOverlay.setAttribute('aria-hidden','false');
-        // scroll to top inside overlay
-        reelsOverlay.scrollTop = 0;
-      });
-    }
-    if (showYoutubeBtn && youtubeOverlay) {
-      showYoutubeBtn.addEventListener('click', () => {
-        youtubeOverlay.classList.add('active');
-        youtubeOverlay.setAttribute('aria-hidden','false');
-        youtubeOverlay.scrollTop = 0;
-      });
-    }
+    // IntersectionObserver options
+    const obsOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.08 };
 
-    // Close handlers
-    if (closeReelsBtn && reelsOverlay) {
-      closeReelsBtn.addEventListener('click', () => {
-        reelsOverlay.classList.remove('active');
-        reelsOverlay.setAttribute('aria-hidden','true');
-      });
-    }
-    if (closeYoutubeBtn && youtubeOverlay) {
-      closeYoutubeBtn.addEventListener('click', () => {
-        youtubeOverlay.classList.remove('active');
-        youtubeOverlay.setAttribute('aria-hidden','true');
-      });
-    }
-
-    // click outside to close
-    [reelsOverlay, youtubeOverlay].forEach(ov => {
-      if (!ov) return;
-      ov.addEventListener('click', (e) => {
-        if (e.target === ov) {
-          ov.classList.remove('active');
-          ov.setAttribute('aria-hidden','true');
+    const revealCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
         }
       });
+    };
+    const observer = new IntersectionObserver(revealCallback, obsOptions);
+
+    // observe all elements with data-reveal or .reveal
+    document.querySelectorAll('[data-reveal], .reveal').forEach(el => {
+      observer.observe(el);
     });
 
-    // ESC to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (reelsOverlay) { reelsOverlay.classList.remove('active'); reelsOverlay.setAttribute('aria-hidden','true'); }
-        if (youtubeOverlay) { youtubeOverlay.classList.remove('active'); youtubeOverlay.setAttribute('aria-hidden','true'); }
-      }
+    // Also observe stagger children (project-cards)
+    document.querySelectorAll('.project-card').forEach((el) => {
+      observer.observe(el);
     });
+
+    // observe scale-stagger icons
+    document.querySelectorAll('.scale-stagger').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ===== Overlay (play video) logic =====
+    const overlay = document.getElementById('videoOverlay');
+    const overlayIframe = document.getElementById('overlayIframe');
+    const closeOverlay = document.getElementById('closeOverlay');
+
+    // open overlay when clicking view button in a project-card
+    document.querySelectorAll('.project-card .view-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.currentTarget.closest('.project-card');
+        const videoUrl = card.getAttribute('data-video') || '';
+        if (!videoUrl) return;
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        // set iframe src
+        overlayIframe.src = videoUrl;
+        // scroll overlay to top
+        overlay.scrollTop = 0;
+      });
+    });
+
+    // close overlay
+    const closeOverlayFn = () => {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      // stop video
+      overlayIframe.src = '';
+    };
+    closeOverlay.addEventListener('click', closeOverlayFn);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeOverlayFn();
+    });
+
+    // ESC handler
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) closeOverlayFn();
+    });
+
+    // Optional: Buttons that open overlays for all reels / yt (if present)
+    const btnAllReels = document.getElementById('openAllReels');
+    if (btnAllReels) {
+      btnAllReels.addEventListener('click', () => {
+        const first = document.querySelector('.project-card');
+        if (first) first.querySelector('.view-btn').click();
+      });
+    }
+    const btnAllYt = document.getElementById('openAllYoutube');
+    if (btnAllYt) {
+      btnAllYt.addEventListener('click', () => {
+        // example: open the youtube file iframe (replace if needed)
+        const ytUrl = 'https://drive.google.com/file/d/1PRKYxzd0DwFCCdg9ZvkcRvs1tpy_HKgF/preview';
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden','false');
+        overlayIframe.src = ytUrl;
+      });
+    }
+  });
   </script>
 </body>
 </html>
